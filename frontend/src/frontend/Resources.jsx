@@ -58,6 +58,7 @@ const ResourcesPage = () => {
           <div className="flex w-full p-8 gap-8">
             {/* Large "Get Involved" Image */}
             <div className="flex-1">
+                <h1 className="text-2xl font-semibold tracking-tight leading-7"> Get Involved </h1>
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/8b5f020b1697482bb283efed7adbe58e/ad6ec1f06b2684c6c52d196bb755dd00e4a5795b14fa09c03764f9a581fe6e36?apiKey=8b5f020b1697482bb283efed7adbe58e&"
                 alt="Get Involved"
