@@ -2,6 +2,7 @@ import React from "react";
 import DataMap from './DataMap';
 import DataSidebar from './DataSidebar';
 import Navbar from './Navbar'
+import { motion } from "framer-motion";
 
 function Hero() {
   return (
@@ -35,32 +36,39 @@ function Hero() {
 
 function DataExplanation() {
   return (
-    <section className="flex flex-col justify-center p-16 w-full text-gray-700 bg-white max-md:px-5 max-md:max-w-full font-inter">
-      <div className="flex flex-wrap gap-16 items-center w-full max-md:max-w-full">
-        <div className="flex flex-wrap flex-1 shrink gap-6 items-start self-stretch my-auto w-full basis-0 min-w-[240px] max-md:max-w-full">
-          <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[160px] max-md:max-w-full">
-            <div className="flex flex-col w-full max-md:max-w-full">
-              <h2 className="text-5xl font-semibold tracking-tighter leading-tight text-black text-center mb-8 max-md:text-4xl">
-                Why This Data Matters
-              </h2>
-              <p className="mt-2 text-2xl leading-9 max-md:max-w-full">
-                Social factors—like income, race, and access to education—have
-                a profound impact on health outcomes. This project uses data
-                from Seattle's communities to explore how these factors might
-                influence cancer rates and outcomes. By visualizing this data,
-                we aim to spark conversations and inform decisions that can
-                lead to healthier, more equitable communities.
-                <br /><br />
-                As you scroll down, you'll find an interactive map that allows
-                you to dive deep into the data for each Seattle neighborhood.
-                You can examine how cancer rates compare with factors like
-                income, education, and race in real-time.
-              </p>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
+      className="w-full min-h-screen"
+    >
+      <section className="flex flex-col justify-center p-16 w-full min-h-screen text-gray-700 bg-white max-md:px-5 font-inter">
+        <div className="flex flex-wrap gap-16 items-center w-full">
+          <div className="flex flex-wrap flex-1 shrink gap-6 items-start self-stretch my-auto w-full basis-0 min-w-[240px]">
+            <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[160px]">
+              <div className="flex flex-col w-full">
+                <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8">
+                  Why This Data Matters
+                </h2>
+                <p className="mt-2 text-xl text-left mb-32">
+                  Social factors—like income, race, and access to education—have
+                  a profound impact on health outcomes. This project uses data
+                  from Seattle's communities to explore how these factors might
+                  influence cancer rates and outcomes. By visualizing this data,
+                  we aim to spark conversations and inform decisions that can
+                  lead to healthier, more equitable communities.
+                  <br /><br />
+                  As you scroll down, you'll find an interactive map that allows
+                  you to dive deep into the data for each Seattle neighborhood.
+                  You can examine how cancer rates compare with factors like
+                  income, education, and race in real-time.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </motion.div>
   );
 }
 
@@ -71,7 +79,7 @@ function ExploreData() {
       <h2 className="text-5xl font-semibold tracking-tighter leading-tight text-center mb-8 max-md:text-4xl">
         Explore The Data
       </h2>
-      <div className="flex flex-wrap gap-4 items-start pr-16 pl-16 w-full min-h-[940px] max-md:px-5 max-md:max-w-full">
+      <div className="flex flex-wrap gap-4 items-start pr-16 pl-16 w-full min-h-[940px] max-md:px-5 max-md:max-w-full mb-12">
         <DataMap />
         <DataSidebar />
       </div>
@@ -84,10 +92,10 @@ function Footer() {
     <footer className="flex overflow-hidden flex-wrap gap-4 items-start px-8 pt-8 pb-1 w-full text-base leading-snug text-black bg-white border-t border-zinc-300 min-h-[142px] max-md:px-5 max-md:max-w-full font-inter">
       <div className="flex flex-col items-start w-full max-w-[320px]">
         <div className="flex flex-col self-stretch pb-4 w-full font-semibold">
-          <h3 className="w-full">Contact Us</h3>
+          <h3 className="text-left w-full">Contact Us</h3>
         </div>
         <div className="flex flex-col items-start">
-          <a href="mailto:someemail@uw.edu" className="left 40 mt-3 text-black hover:text-gray-600">
+          <a href="mailto:someemail@uw.edu" className="text-left mt-3 text-black hover:text-gray-600">
             someemail@uw.edu
           </a>
         </div>

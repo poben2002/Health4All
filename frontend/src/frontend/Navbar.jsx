@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -8,29 +9,27 @@ function Navbar() {
   };
 
   return (
-    <header className="w-full bg-white border-b border-zinc-300 font-inter pb-6
+    <header className="w-full bg-white border-b border-zinc-300 font-inter pb-
     ">
-      <nav className="flex justify-between items-center p-6 max-w-screen-xl mx-auto">
+      <nav className="flex justify-between items-center p-9 max-w-screen-xl mx-auto !important">
         {/* Logo */}
         <div className="text-xl font-bold text-black">
-          <a href="#home" className="no-underline">
-          </a>
+          <Link to="/" className="no-underline">
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <div className="absolute top-0 left-20 flex space-x-6 p-4">
-          <a
-            href="#home"
+          <Link to="/"
             className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
           >
             Home
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link to="/About"
             className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
           >
             About
-          </a>
+          </Link>
           <a
             href="#map"
             className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
