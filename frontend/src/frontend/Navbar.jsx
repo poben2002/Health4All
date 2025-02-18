@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 
 function Navbar() {
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const isActive = (path) => location.pathname === path ? "bg-gray-200 text-black" : "";
 
   return (
     <header className="w-full bg-white border-b border-zinc-300 font-inter pb-
@@ -21,27 +25,26 @@ function Navbar() {
         {/* Desktop Navigation */}
         <div className="absolute top-0 left-20 flex space-x-6 p-4">
           <Link to="/"
-            className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
+            className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/')}`}
           >
             Home
           </Link>
-          <Link to="/About"
-            className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
+          <Link to="https://www.twitch.tv/flyingpancreas/clip/BitterModernDugongTBCheesePull-8wZKju7HqfyusRGP"
+            className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/About')}`}
           >
             About
           </Link>
           <a
-            href="#map"
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
           >
             Map
           </a>
-          <a
-            href="#resources"
-            className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
+          <Link to="/Resources"
+            className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/Resources')}`}
           >
             Resources
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Hamburger Menu */}

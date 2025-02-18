@@ -1,8 +1,13 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 function Resources() {
     return (
-        <a href="https://www.youtube.com/shorts/iE1k_PbGArU"> Click This!</a>
+        <div>
+            <Navbar />
+            <a href="https://www.youtube.com/shorts/iE1k_PbGArU"> Click This!</a>
+        </div>
+
     )
 }
 
