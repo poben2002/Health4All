@@ -2,12 +2,13 @@ import React from "react";
 import DataMap from './DataMap';
 import DataSidebar from './DataSidebar';
 import Navbar from './Navbar'
-import { motion } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react"
 
 function Hero() {
   return (
     <section
-      className="relative flex flex-col justify-center items-center w-full h-screen bg-cover bg-center bg-no-repeat font-inter"
+      className="relative flex flex-col justify-center items-center w-full min-h-screen bg-cover bg-center bg-no-repeat font-inter"
       style={{
         backgroundImage: "url('https://cdn.builder.io/api/v1/image/assets/8b5f020b1697482bb283efed7adbe58e/6dbd5e49b7ba35a3f444e71ab032b6917712e69008fc6c72291c658fcb0b995c?apiKey=8b5f020b1697482bb283efed7adbe58e&')",
         backgroundSize: "cover",   // Ensure the image covers the whole section without stretching
@@ -35,14 +36,27 @@ function Hero() {
 }
 
 function DataExplanation() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { amount: 0.5 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      console.log("coming into view")
+      controls.start({opacity : 1, y : 0, transition: { duration : 0.8 }});
+    } else {
+      console.log("leaving view")
+      controls.start({opacity: 0, y: 50, transition: { duration: 0.8 }});
+    }
+  }, [isInView, controls])
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: false, amount: 0.2 }}
-      className="w-full min-h-screen"
+    ref={ref}
+    initial={{ opacity: 0, y: 50 }}
+    animate={controls}
+    className="w-full min-h-screen"
     >
-      <section className="flex flex-col justify-center p-16 w-full min-h-screen text-gray-700 bg-white max-md:px-5 font-inter">
+      <section className="flex flex-col justify-center p-16 w-full w-full min-h-[90vh] text-gray-700 bg-white max-md:px-5 font-inter">
         <div className="flex flex-wrap gap-16 items-center w-full">
           <div className="flex flex-wrap flex-1 shrink gap-6 items-start self-stretch my-auto w-full basis-0 min-w-[240px]">
             <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[160px]">
@@ -50,7 +64,7 @@ function DataExplanation() {
                 <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8">
                   Why This Data Matters
                 </h2>
-                <p className="mt-2 text-xl text-left mb-32">
+                <p className="mt-2 text-xl text-left mb-2">
                   Social factors—like income, race, and access to education—have
                   a profound impact on health outcomes. This project uses data
                   from Seattle's communities to explore how these factors might
@@ -74,16 +88,34 @@ function DataExplanation() {
 
 
 function ExploreData() {
+  const ref = useRef(null);  // Reference to the ExploreData section
+  const isInView = useInView(ref, { amount: 0.5 });  // Track visibility
+  const controls = useAnimation();  // Animation controls
+
+  useEffect(() => {
+    if (isInView) {
+      console.log("coming into view");
+      controls.start({ opacity: 1, y: 0, transition: { duration: 1.0 } });
+    } else {
+      console.log("leaving view");
+      controls.start({ opacity: 0, y: 50, transition: { duration: 1.0 } });
+    }
+  }, [isInView, controls]);
   return (
-    <section className="flex flex-col items-center w-full text-black bg-white font-inter">
-      <h2 className="text-5xl font-semibold tracking-tighter leading-tight text-center mb-8 max-md:text-4xl">
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}  // Start with opacity 0 and y offset
+      animate={controls}  // Use animation controls
+      className="flex flex-col items-center w-full text-black bg-white font-inter mt-[-10px]"
+    >
+      <h2 className="text-5xl font-semibold tracking-tighter leading-tight text-center mb-4 max-md:text-4xl">
         Explore The Data
       </h2>
-      <div className="flex flex-wrap gap-4 items-start pr-16 pl-16 w-full min-h-[940px] max-md:px-5 max-md:max-w-full mb-12">
+      <div className="flex flex-wrap gap-4 items-start pr-8 pl-8 w-full min-h-[940px] max-md:px-5 max-md:max-w-full mb-8">
         <DataMap />
         <DataSidebar />
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -107,7 +139,7 @@ function Footer() {
 
 function Home() {
   return (
-    <div className="font-inter">
+    <div className="font-inter min-h-screen">
       <Navbar />
       <Hero />
       <DataExplanation />
