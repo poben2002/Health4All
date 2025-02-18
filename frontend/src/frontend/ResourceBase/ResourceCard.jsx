@@ -1,23 +1,21 @@
 import React from "react";
 
-function ResourceCard({ title, image, alt, description, icon }) {
+const ResourceCard = ({ title, image, alt, description, icon }) => {
   return (
-    <div className="flex absolute z-0 max-w-full rounded-xl bg-white bg-opacity-60 bottom-[331px] h-[497px] left-[78px] min-h-[497px] w-[413px]">
+    <div className="flex flex-col items-center p-6 rounded-xl bg-white bg-opacity-60 shadow-lg max-w-sm mx-auto my-4">
       {image && (
         <img
           loading="lazy"
           src={image}
           alt={alt}
-          className="object-contain absolute z-0 max-w-full rounded-xl aspect-[1.26] h-[519px] left-[79px] top-[338px] w-[654px]"
+          className="w-full h-48 object-cover rounded-t-xl"
         />
       )}
-      {title && (
-        <div className="absolute left-20 z-0 h-12 text-2xl font-semibold tracking-tight leading-7 top-[290px] w-[212px]">
-          {title}
-        </div>
-      )}
+      <div className="text-2xl font-semibold tracking-tight leading-7 mt-4">
+        {title}
+      </div>
       {description && (
-        <div className="absolute z-0 h-[42px] right-[119px] top-[397px] w-[616px] max-md:max-w-full">
+        <div className="text-center mt-2 text-gray-700">
           {description}
         </div>
       )}
@@ -26,11 +24,11 @@ function ResourceCard({ title, image, alt, description, icon }) {
           loading="lazy"
           src={icon}
           alt=""
-          className="object-contain absolute z-0 aspect-[1.16] h-[43px] right-[685px] top-[533px] w-[50px]"
+          className="w-12 h-12 mt-4"
         />
       )}
     </div>
   );
-}
+};
 
 export default ResourceCard;

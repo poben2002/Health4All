@@ -29,14 +29,14 @@ function Navbar() {
           >
             Home
           </Link>
-          <Link to="https://www.twitch.tv/flyingpancreas/clip/BitterModernDugongTBCheesePull-8wZKju7HqfyusRGP"
+          <Link to="/About"
             className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/About')}`}
           >
             About
           </Link>
           <Link
             to="/Map"
-            className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
+            className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/Map')}`}
           >
             Map
           </Link>
