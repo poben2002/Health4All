@@ -34,12 +34,12 @@ function Navbar() {
           >
             About
           </Link>
-          <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          <Link
+            to="/Map"
             className="text-black hover:bg-gray-200 hover:text-black py-2 px-4 rounded-lg transition-colors"
           >
             Map
-          </a>
+          </Link>
           <Link to="/Resources"
             className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/Resources')}`}
           >
