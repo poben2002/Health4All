@@ -26,7 +26,7 @@ function Hero() {
           intersect with cancer data across Seattle's neighborhoods with our interactive map.
         </p>
         <div className="mt-10">
-          <a href="https://www.youtube.com/shorts/iE1k_PbGArU" className="inline-block px-6 py-3 text-xl font-medium bg-gray-200 text-black rounded-xl shadow-md">
+          <a href="" className="inline-block px-6 py-3 text-xl font-medium bg-gray-200 text-black rounded-xl shadow-md">
             Start Exploring
           </a>
         </div>

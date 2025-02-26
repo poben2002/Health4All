@@ -1,7 +1,8 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 
-class LeBron extends React.Component {
+// Boilerplate code for if we want to add Youtube Integration to our Resources or About page (move eventually)
+class Map extends React.Component {
     render() {
         const options = {
             height: '390',
@@ -11,11 +12,11 @@ class LeBron extends React.Component {
                 controls: 1,
             },
         };
-        return <YouTube videoId="fGbIrmC-L9o" options={options} onReady={this._onReady} id="video"/>;
+        return <YouTube videoId="h2rR77VsF5c" options={options} onReady={this._onReady} id="video"/>;
     }
     _onReady(event) {
         event.target.playVideo();
       }
 }
 
-export default LeBron;
+export default Map;
