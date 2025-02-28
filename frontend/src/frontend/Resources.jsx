@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import ResourceCard from "./ResourceBase/ResourceCard";
 import InfoSection from "./ResourceBase/InfoSection";
 
+
+//TODO: Adjust the visuals accordingly
 const ResourcesPage = () => {
     const resourceCards = [
       {
@@ -20,7 +22,7 @@ const ResourcesPage = () => {
         icon: "https://cdn.builder.io/api/v1/image/assets/8b5f020b1697482bb283efed7adbe58e/c97e7617cb59e34375e57b99f861e7505a7745ee8954dacf0a58d71bc1453109?apiKey=8b5f020b1697482bb283efed7adbe58e&"
       }
     ];
-  
+
 
   const infoSections = [
     {
