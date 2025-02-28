@@ -13,10 +13,9 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Initialize the map, centered on Seattle
+        // Initialize the map on Seattle
         var map = L.map('map').setView([47.6062, -122.3321], 10);
 
-        // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
@@ -86,14 +85,12 @@
             { name: "Snoqualmie and North Bend", lat: 47.514316822, lon: -121.808918657, rate: 220.6, comparison: "higher", cases: 100 }
         ];
 
-        // Function to determine marker color
         function getColor(comparison) {
             return comparison === "higher" ? "#ff0000" :
                    comparison === "lower" ? "#00ff00" :
                    "#ffff00";
         }
 
-        // Add markers
         breastCancerData.forEach(function(area) {
             var marker = L.circleMarker([area.lat, area.lon], {
                 radius: 8,
