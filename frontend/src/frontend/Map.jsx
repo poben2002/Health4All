@@ -7,6 +7,18 @@ import breastCancerDataExp from './Data/breastCancerRateData';
 import geoData from "./Data/geoData.json";
 const breastCancerData = breastCancerDataExp();
 
+function Description() {
+  return (
+    <section className="pt-4">
+    <div className="flex flex-col text-center px-4">
+      <p className="mt-6=4 text-lg font-light leading-7"
+      > Interactive map of Neighborhoods and Cities in the King County area.Use the icon at the top right to toggle between marker view and heatmap view.</p>
+    </div>
+    </section>
+  )
+}
+
+
 function getColor(comparison) {
   return comparison === "higher"
     ? "#ff0000"
@@ -163,7 +175,7 @@ function MapComponent() {
       <MapContainer
         center={[47.608013, -122.335167]}
         zoom={10}
-        style={{ height: "100vh", width: "100vw" }}
+        style={{ height: "1000px", width: "2000px" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -207,6 +219,7 @@ function MapComponent() {
         <LegendControl />
         <LayerHandler setActiveLayer={setActiveLayer} />
       </MapContainer>
+      <Description></Description>
     </div>
   );
 }
