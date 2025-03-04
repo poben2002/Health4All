@@ -1,0 +1,67 @@
+import geopandas as gpd
+import pandas as pd
+from shapely.geometry import Point
+
+breastCancerData = [
+    { "name": "Seattle - South Lake Union, Cascade, and Eastlake", "lat": 47.629852255, "lon": -122.331875052, "rate": 101.6, "comparison": "not different", "cases": 47 },
+    { "name": "Federal Way - North Corridor", "lat": 47.334014301, "lon": -122.313855802, "rate": 107.7, "comparison": "lower", "cases": 94 },
+    { "name": "Seattle - South Beacon Hill, Georgetown, and South Park", "lat": 47.548317888, "lon": -122.312341378, "rate": 110, "comparison": "lower", "cases": 101 },
+    { "name": "Renton - South", "lat": 47.463381355, "lon": -122.205679713, "rate": 112.2, "comparison": "lower", "cases": 128 },
+    { "name": "North Highline and White Center", "lat": 47.514527100, "lon": -122.330583705, "rate": 112.6, "comparison": "not different", "cases": 56 },
+    { "name": "Seatac", "lat": 47.435930888, "lon": -122.292626194, "rate": 121.5, "comparison": "not different", "cases": 93 },
+    { "name": "Skyway", "lat": 47.497488047, "lon": -122.235657898, "rate": 122.6, "comparison": "not different", "cases": 60 },
+    { "name": "Seattle - Central District, Chinatown-International District, Judkins, and North Beacon Hill", "lat": 47.594214195, "lon": -122.315076020, "rate": 124.2, "comparison": "not different", "cases": 139 },
+    { "name": "Renton - North", "lat": 47.496956990, "lon": -122.181201594, "rate": 127.1, "comparison": "not different", "cases": 219 },
+    { "name": "Seattle - Rainier Valley and Rainier Beach", "lat": 47.545489992, "lon": -122.261748754, "rate": 129.7, "comparison": "not different", "cases": 206 },
+    { "name": "Seattle - Delridge", "lat": 47.534346020, "lon": -122.352648389, "rate": 130, "comparison": "not different", "cases": 112 },
+    { "name": "Lakeland, Algona, Pacific, and Milton", "lat": 47.298714696, "lon": -122.280539448, "rate": 132.8, "comparison": "not different", "cases": 136 },
+    { "name": "Seattle - Broadview, Haller Lake, and Licton Springs", "lat": 47.719802045, "lon": -122.363575988, "rate": 133.1, "comparison": "not different", "cases": 141 },
+    { "name": "Kent - South", "lat": 47.364619417, "lon": -122.183227388, "rate": 134, "comparison": "not different", "cases": 111 },
+    { "name": "Bellevue - Northeast", "lat": 47.602016706, "lon": -122.115055633, "rate": 134.8, "comparison": "not different", "cases": 149 },
+    { "name": "Tukwila", "lat": 47.470307405, "lon": -122.276307021, "rate": 134.9, "comparison": "not different", "cases": 64 },
+    { "name": "Auburn - North", "lat": 47.323364268, "lon": -122.211710713, "rate": 136.3, "comparison": "not different", "cases": 173 },
+    { "name": "Bellevue - Central", "lat": 47.590429933, "lon": -122.151994792, "rate": 136.8, "comparison": "not different", "cases": 146 },
+    { "name": "Seattle - Downtown, Belltown, and First Hill", "lat": 47.610016756, "lon": -122.345244856, "rate": 137.3, "comparison": "not different", "cases": 105 },
+    { "name": "Duvall, Carnation, Skykomish, and Northeast King County", "lat": 47.521036070, "lon": -121.477785182, "rate": 137.5, "comparison": "not different", "cases": 134 },
+    { "name": "Kent - East", "lat": 47.393487824, "lon": -122.177412760, "rate": 138.1, "comparison": "not different", "cases": 166 },
+    { "name": "Seattle - Northgate and Lake City", "lat": 47.712553021, "lon": -122.284681852, "rate": 139.6, "comparison": "not different", "cases": 182 },
+    { "name": "Kent - Central", "lat": 47.380594283, "lon": -122.203244579, "rate": 140.6, "comparison": "not different", "cases": 88 },
+    { "name": "Seattle - University District", "lat": 47.653928409, "lon": -122.298669506, "rate": 140.7, "comparison": "not different", "cases": 22 },
+    { "name": "Des Moines and Normandy Park", "lat": 47.393514337, "lon": -122.325408260, "rate": 140.9, "comparison": "not different", "cases": 181 },
+    { "name": "East Highlands, Hobart, and Greater Maple Valley", "lat": 47.335761919, "lon": -121.765711768, "rate": 144.8, "comparison": "not different", "cases": 110 },
+    { "name": "Seattle - Ravenna and Bryant", "lat": 47.673658830, "lon": -122.290253472, "rate": 145, "comparison": "not different", "cases": 88 },
+    { "name": "Auburn - South", "lat": 47.276343434, "lon": -122.206234297, "rate": 146.9, "comparison": "not different", "cases": 114 },
+    { "name": "Seattle - Queen Anne", "lat": 47.635403883, "lon": -122.350228187, "rate": 147.7, "comparison": "not different", "cases": 145 },
+    { "name": "Federal Way - Central", "lat": 47.319792355, "lon": -122.366389743, "rate": 148.8, "comparison": "not different", "cases": 139 },
+    { "name": "Vashon", "lat": 47.408647363, "lon": -122.464255778, "rate": 149.3, "comparison": "not different", "cases": 76 },
+    { "name": "Mercer Island and Point Cities", "lat": 47.592792841, "lon": -122.227451776, "rate": 150, "comparison": "not different", "cases": 173 },
+    { "name": "Kent - West", "lat": 47.393537071, "lon": -122.266109298, "rate": 150.7, "comparison": "not different", "cases": 117 },
+    { "name": "Seattle - Magnolia and Interbay", "lat": 47.639312849, "lon": -122.394771831, "rate": 151.5, "comparison": "not different", "cases": 109 },
+    { "name": "Federal Way - Dash Point and Southern Rim", "lat": 47.292631462, "lon": -122.345235226, "rate": 151.7, "comparison": "not different", "cases": 138 },
+    { "name": "Seattle - West Seattle", "lat": 47.558135101, "lon": -122.393891957, "rate": 151.8, "comparison": "not different", "cases": 296 },
+    { "name": "Burien", "lat": 47.470614776, "lon": -122.340621557, "rate": 151.8, "comparison": "not different", "cases": 242 },
+    { "name": "Shoreline", "lat": 47.762363596, "lon": -122.341343265, "rate": 153.1, "comparison": "not different", "cases": 291 },
+    { "name": "Enumclaw, Black Diamond, and Southeast King County", "lat": 47.204724653, "lon": -121.671025494, "rate": 153.9, "comparison": "not different", "cases": 221 },
+    { "name": "Kirkland - North", "lat": 47.717346127, "lon": -122.218539549, "rate": 155, "comparison": "not different", "cases": 159 },
+    { "name": "Seattle - Ballard", "lat": 47.688361976, "lon": -122.393694906, "rate": 157.2, "comparison": "not different", "cases": 217 },
+    { "name": "Newcastle and Four Creeks", "lat": 47.509662560, "lon": -122.047335761, "rate": 160.2, "comparison": "not different", "cases": 124 },
+    { "name": "Bothell and Woodinville", "lat": 47.752436856, "lon": -122.165127135, "rate": 160.2, "comparison": "not different", "cases": 175 },
+    { "name": "Seattle - Fremont and Wallingford", "lat": 47.650704643, "lon": -122.337491044, "rate": 161, "comparison": "not different", "cases": 98 },
+    { "name": "Bellevue - South", "lat": 47.558138331, "lon": -122.148115143, "rate": 163.7, "comparison": "not different", "cases": 168 },
+    { "name": "Kenmore and Lake Forest Park", "lat": 47.752792256, "lon": -122.264201685, "rate": 164.1, "comparison": "not different", "cases": 188 },
+    { "name": "Redmond - North", "lat": 47.690112703, "lon": -122.110437514, "rate": 165.6, "comparison": "not different", "cases": 125 },
+    { "name": "Fairwood", "lat": 47.441004668, "lon": -122.145770581, "rate": 165.8, "comparison": "not different", "cases": 106 },
+    { "name": "Seattle - Laurelhurst, Sand Point, and Wedgwood", "lat": 47.668488322, "lon": -122.267418137, "rate": 166.9, "comparison": "not different", "cases": 142 },
+    { "name": "Redmond - South", "lat": 47.653779021, "lon": -122.110621279, "rate": 167.7, "comparison": "not different", "cases": 122 },
+    { "name": "Seattle - Green Lake and Phinney Ridge", "lat": 47.681719648, "lon": -122.344605247, "rate": 168.1, "comparison": "not different", "cases": 178 },
+    { "name": "Seattle - Montlake, Madison Park, and Madrona", "lat": 47.633425996, "lon": -122.292950448, "rate": 168.2, "comparison": "not different", "cases": 134 },
+    { "name": "Seattle - Capitol Hill", "lat": 47.625588865, "lon": -122.313842393, "rate": 168.4, "comparison": "not different", "cases": 107 },
+    { "name": "Bellevue - West", "lat": 47.588298695, "lon": -122.197117278, "rate": 176.5, "comparison": "not different", "cases": 227 },
+    { "name": "Issaquah, Sammamish, and Pine Lake", "lat": 47.600846485, "lon": -122.024369123, "rate": 179.9, "comparison": "not different", "cases": 119 },
+    { "name": "Seattle - North Queen Anne", "lat": 47.653416019, "lon": -122.365658337, "rate": 184.6, "comparison": "not different", "cases": 128 }
+]
+
+df = pd.DataFrame(breastCancerData)
+gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df.lon, df.lat)])
+gdf.set_crs("EPSG:4326", inplace=True)
+gdf.to_file("locations.shp")
