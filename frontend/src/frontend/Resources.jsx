@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import ResourceCard from "./ResourceBase/ResourceCard";
 import InfoSection from "./ResourceBase/InfoSection";
+import { motion } from "framer-motion";
 
 
 //TODO: Adjust the visuals accordingly
@@ -52,33 +53,55 @@ const ResourcesPage = () => {
   ];
 
   return (
+        <section>
+          <Navbar/>
         <div className="flex flex-col items-start text-sm leading-5 text-black bg-white">
-          <Navbar />
+
           <div className="w-full text-center text-5xl font-semibold tracking-tighter py-8">
             Resources
           </div>
           <div className="flex w-full p-8 gap-8">
             {/* Large "Get Involved" Image */}
             <div className="flex-1">
-                <h1 className="text-2xl font-semibold tracking-tight leading-7"> Get Involved </h1>
+                <h1 className="text-2xl font-semibold tracking-tight leading-7 pb-4"> Get Involved </h1>
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/8b5f020b1697482bb283efed7adbe58e/ad6ec1f06b2684c6c52d196bb755dd00e4a5795b14fa09c03764f9a581fe6e36?apiKey=8b5f020b1697482bb283efed7adbe58e&"
                 alt="Get Involved"
-                className="w-full h-full object-cover rounded-xl"
+                className="w-500 h-200 object-cover rounded-xl"
               />
             </div>
             {/* Stacked Cards */}
-            <div className="flex-1 flex flex-col gap-8">
+            <motion.div
+            className="flex-1 flex flex-col gap-4 mt-8"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.3, // Stagger each child animation by 0.3s
+                },
+              },
+            }}
+          >
               {resourceCards.map((card, index) => (
                 <ResourceCard key={index} {...card} />
               ))}
-            </div>
+              </motion.div>
           </div>
+          <InfoSection></InfoSection>
+        </div>
+        </section>
+      );
+};
+
+/*
+          <div className="flex-1 flex flex-col gap-4 mt-8 mx-auto pb-8">
           {infoSections.map((section, index) => (
             <InfoSection key={index} {...section} />
           ))}
-        </div>
-      );
-};
+          </div>
+
+*/
 
 export default ResourcesPage;

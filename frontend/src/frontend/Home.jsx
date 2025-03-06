@@ -1,9 +1,10 @@
 import React from "react";
 import DataMap from './DataMap';
 import DataSidebar from './DataSidebar';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
 import { motion, useInView, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -26,9 +27,9 @@ function Hero() {
           intersect with cancer data across Seattle's neighborhoods with our interactive map.
         </p>
         <div className="mt-10">
-          <a href="" className="inline-block px-6 py-3 text-xl font-medium bg-gray-200 text-black rounded-xl shadow-md">
+          <Link to="/Map" className={`inline-block px-6 py-3 text-xl font-medium bg-gray-200 text-black rounded-xl shadow-md`}>
             Start Exploring
-          </a>
+          </Link>
         </div>
       </div>
     </section>
