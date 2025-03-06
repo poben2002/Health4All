@@ -36,7 +36,7 @@ function InfoSection() {
                 <p className="mt-2 text-xl text-left mb-2 text-black">
                 Make an appointment for a cancer screening or regular check-up at a clinic near you. Free and low-cost options available.
                 </p>
-                <h3 className="text-2xl font-semibold text-left mt-8 mb-4 text-black">Financial Assitance and Insurance Information</h3>
+                <h3 className="text-2xl font-semibold text-left mt-8 mb-4 text-black">Financial Assistance and Insurance Information</h3>
 
                 <p className="mt-2 text-xl text-left mb-2 text-black">
                 Worried about healthcare costs? Explore resources like Medicaid, charity care programs, and patient assistance funds that can help make screenings, treatments, and medications more affordable.
