@@ -3,28 +3,26 @@ import Navbar from './Navbar';
 import { MapContainer, TileLayer, useMap, GeoJSON, LayersControl, LayerGroup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
-import breastCancerDataExp from './Data/breastCancerRateData';
 import geoData from "./Data/geoData.json";
-const breastCancerData = breastCancerDataExp();
 
 function Description() {
   return (
     <section className="pt-4">
-    <div className="flex flex-col text-center px-4">
-      <p className="mt-6=4 text-lg font-light leading-7"
-      > Interactive map of Neighborhoods and Cities in the King County area.Use the icon at the top right to toggle between marker view and heatmap view.</p>
-    </div>
+      <div className="flex flex-col text-center px-4">
+        <p className="mt-6=4 text-lg font-light leading-7">
+          Interactive map of Neighborhoods and Cities in the King County area. Use the icon at the top right to toggle between marker view and heatmap view.
+        </p>
+      </div>
     </section>
-  )
+  );
 }
-
 
 function getColor(comparison) {
   return comparison === "higher"
     ? "#ff0000"
     : comparison === "lower"
-    ? "#00ff00"
-    : "#ffff00";
+      ? "#00ff00"
+      : "#ffff00";
 }
 
 function LegendControl() {
@@ -73,21 +71,10 @@ function CircleMarkers({ breastCancerData, activeLayer }) {
   const map = useMap();
 
   useEffect(() => {
-    console.log("Rendering Circle Markers...");
-    if (!map) {
-      console.log("Map not available yet.");
-      return;
-    }
+    if (!map || activeLayer !== 'circleMarkers') return;
 
-    if (activeLayer !== 'circleMarkers') {
-      console.log("Skipping Circle Markers: Layer is not 'circleMarkers'");
-      return;
-    }
-
-    console.log("Adding markers...");
-    const markers = breastCancerData.map((area) => {
-      console.log(`Adding marker for: ${area.name}`);
-      return L.circleMarker([area.lat, area.lon], {
+    const markers = breastCancerData.map((area) =>
+      L.circleMarker([area.lat, area.lon], {
         radius: 8,
         fillColor: getColor(area.comparison),
         color: "#000",
@@ -101,14 +88,11 @@ function CircleMarkers({ breastCancerData, activeLayer }) {
           <p>Cases: ${area.cases}</p>
           <p>Comparison: ${area.comparison}</p>
         </div>`
-      );
-    });
+      )
+    );
 
     const layerGroup = L.layerGroup(markers).addTo(map);
-    console.log("Markers added to map.");
-
     return () => {
-      console.log("Cleaning up markers...");
       layerGroup.clearLayers();
     };
   }, [map, activeLayer, breastCancerData]);
@@ -141,8 +125,20 @@ function LayerHandler({ setActiveLayer }) {
 }
 
 function MapComponent() {
+  const [breastCancerData, setBreastCancerData] = useState([]);
   const [geoDataWithComparison, setGeoDataWithComparison] = useState(null);
   const [activeLayer, setActiveLayer] = useState('circleMarkers');
+
+  useEffect(() => {
+    fetch("/api/heatmap")
+      .then((res) => res.json())
+      .then((data) => {
+        setBreastCancerData(data.heatmap);
+      })
+      .catch((err) => {
+        console.error("Error fetching heatmap data:", err);
+      });
+  }, []);
 
   useEffect(() => {
     const updatedGeoData = geoData.features.map((feature) => {
@@ -159,7 +155,7 @@ function MapComponent() {
     });
 
     setGeoDataWithComparison(updatedGeoData);
-  }, [breastCancerData, geoData]);
+  }, [breastCancerData]);
 
   const geoJSONStyle = (feature) => ({
     fillColor: getColor(feature.properties.comparison),
@@ -219,7 +215,7 @@ function MapComponent() {
         <LegendControl />
         <LayerHandler setActiveLayer={setActiveLayer} />
       </MapContainer>
-      <Description></Description>
+      <Description />
     </div>
   );
 }
