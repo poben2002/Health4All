@@ -19,10 +19,10 @@ function Description() {
 
 function getColor(comparison) {
   return comparison === "higher"
-    ? "#ff0000"
+    ? "#006400"
     : comparison === "lower"
-      ? "#00ff00"
-      : "#ffff00";
+      ? "#90EE90"
+      : "#32CD32";
 }
 
 function LegendControl() {
@@ -72,24 +72,26 @@ function CircleMarkers({ breastCancerData, activeLayer }) {
 
   useEffect(() => {
     if (!map || activeLayer !== 'circleMarkers') return;
-
-    const markers = breastCancerData.map((area) =>
-      L.circleMarker([area.lat, area.lon], {
-        radius: 8,
-        fillColor: getColor(area.comparison),
-        color: "#000",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.8,
-      }).bindPopup(
-        `<div>
-          <h3>${area.name}</h3>
-          <p>${area.rate} per 100,000</p>
-          <p>Cases: ${area.cases}</p>
-          <p>Comparison: ${area.comparison}</p>
-        </div>`
-      )
-    );
+  
+    const markers = breastCancerData
+      .filter(area => area.lat !== undefined && area.lon !== undefined)
+      .map(area =>
+        L.circleMarker([area.lat, area.lon], {
+          radius: 8,
+          fillColor: getColor(area.comparison),
+          color: "#000",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.8,
+        }).bindPopup(
+          `<div>
+            <h3>${area.name}</h3>
+            <p>${area.rate} per 100,000</p>
+            <p>Cases: ${area.cases}</p>
+            <p>Comparison: ${area.comparison}</p>
+          </div>`
+        )
+      );
 
     const layerGroup = L.layerGroup(markers).addTo(map);
     return () => {
