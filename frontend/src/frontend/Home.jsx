@@ -30,6 +30,9 @@ function Hero() {
           <Link to="/Map" className={`inline-block px-6 py-3 text-xl font-medium bg-gray-200 text-black rounded-xl shadow-md`}>
             Start Exploring
           </Link>
+          <Link to="/Resources" className={`inline-block m-2 px-6 py-3 text-xl font-medium bg-gray-200 text-black rounded-xl shadow-md`}>
+            More Information
+          </Link>
         </div>
       </div>
     </section>

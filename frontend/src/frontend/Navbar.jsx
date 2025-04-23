@@ -29,11 +29,6 @@ function Navbar() {
           >
             Home
           </Link>
-          <Link to="/About"
-            className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/About')}`}
-          >
-            About
-          </Link>
           <Link
             to="/Map"
             className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/Map')}`}
@@ -44,6 +39,11 @@ function Navbar() {
             className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/Resources')}`}
           >
             Resources
+          </Link>
+          <Link to="/About"
+            className={`text-black py-2 px-4 rounded-lg transition-colors ${isActive('/About')}`}
+          >
+            About
           </Link>
         </div>
 
