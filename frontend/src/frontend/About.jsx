@@ -109,6 +109,46 @@ function Mission() {
   );
 }
 
+function AboutData() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.5 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start({ opacity: 1, y: 0, transition: { duration: 0.8 } });
+    } else {
+      controls.start({ opacity: 0, y: 50, transition: { duration: 0.8 } });
+    }
+  }, [isInView, controls]);
+
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={controls}
+      className="w-full min-h-screen"
+    >
+      <section className="flex flex-col justify-center p-16 w-full min-h-[90vh] text-gray-700 bg-white max-md:px-5 font-inter">
+        <div className="flex flex-wrap gap-16 items-center w-full">
+          <div className="flex flex-wrap flex-1 shrink gap-6 items-start self-stretch my-auto w-full basis-0 min-w-[240px]">
+            <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[160px]">
+              <div className="flex flex-col w-full">
+                <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8"> Our Data</h2>
+                <p className="mt-2 text-xl text-left mb-2">
+                 Our data comes from _____
+                </p>
+                </div>
+                </div>
+              </div>
+            </div>
+            </section>
+
+    </motion.div> )
+}
+
+
 function TeamIntro() {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.5 });
@@ -206,6 +246,7 @@ function About() {
       <Navbar />
       <Hero />
       <Mission />
+      <AboutData />
       <TeamIntro />
       <Footer />
     </div>

@@ -73,7 +73,7 @@ function ResourceCard({ title, subtitle, icon, color}) {
           className="w-24 h-24 transition-transform duration-300 hover:-translate-y-2 hover:rotate-1"
         />
       </div>
-      <div className="mt-6">
+      <div className="mt-1">
         <p className="text-sm font-medium text-gray-800">Featured Resource</p>
         <h3 className="text-lg font-bold text-black leading-snug">
           {title}
