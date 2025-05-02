@@ -1,0 +1,42 @@
+[
+  {
+    "zip_code": "98101",
+    "poverty_rate": 12.5,
+    "uninsured_rate": 7.5,
+    "no_highschool_rate": 9.0,
+    "minority_percent": 35.0,
+    "overall_cancer_rate": 420
+  },
+  {
+    "zip_code": "98102",
+    "poverty_rate": 8.3,
+    "uninsured_rate": 5.1,
+    "no_highschool_rate": 6.2,
+    "minority_percent": 28.2,
+    "overall_cancer_rate": 370
+  },
+  {
+    "zip_code": "98103",
+    "poverty_rate": 10.1,
+    "uninsured_rate": 6.3,
+    "no_highschool_rate": 7.1,
+    "minority_percent": 30.5,
+    "overall_cancer_rate": 410
+  },
+  {
+    "zip_code": "98104",
+    "poverty_rate": 18.7,
+    "uninsured_rate": 9.8,
+    "no_highschool_rate": 11.5,
+    "minority_percent": 50.1,
+    "overall_cancer_rate": 450
+  },
+  {
+    "zip_code": "98105",
+    "poverty_rate": 7.2,
+    "uninsured_rate": 4.7,
+    "no_highschool_rate": 5.4,
+    "minority_percent": 25.0,
+    "overall_cancer_rate": 360
+  }
+]

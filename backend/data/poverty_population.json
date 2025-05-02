@@ -1,0 +1,429 @@
+[
+  {
+    "hra_id":1,
+    "hra_name":"Enumclaw, Black Diamond, and Southeast King County",
+    "total_pop":64175,
+    "below_poverty_level_pop":4211,
+    "percent_below_poverty":6.56
+  },
+  {
+    "hra_id":2,
+    "hra_name":"Auburn - South",
+    "total_pop":31738,
+    "below_poverty_level_pop":2796,
+    "percent_below_poverty":8.81
+  },
+  {
+    "hra_id":3,
+    "hra_name":"Federal Way - Dash Point and Southern Rim",
+    "total_pop":41490,
+    "below_poverty_level_pop":3191,
+    "percent_below_poverty":7.69
+  },
+  {
+    "hra_id":4,
+    "hra_name":"Lakeland, Algona, Pacific, and Milton",
+    "total_pop":30212,
+    "below_poverty_level_pop":2448,
+    "percent_below_poverty":8.1
+  },
+  {
+    "hra_id":5,
+    "hra_name":"Auburn - North",
+    "total_pop":41372,
+    "below_poverty_level_pop":3023,
+    "percent_below_poverty":7.31
+  },
+  {
+    "hra_id":6,
+    "hra_name":"Federal Way - Central",
+    "total_pop":36271,
+    "below_poverty_level_pop":3988,
+    "percent_below_poverty":11.0
+  },
+  {
+    "hra_id":7,
+    "hra_name":"Federal Way - North Corridor",
+    "total_pop":29403,
+    "below_poverty_level_pop":4589,
+    "percent_below_poverty":15.61
+  },
+  {
+    "hra_id":8,
+    "hra_name":"East Highlands, Hobart, and Greater Maple Valley",
+    "total_pop":38950,
+    "below_poverty_level_pop":2108,
+    "percent_below_poverty":5.41
+  },
+  {
+    "hra_id":9,
+    "hra_name":"Kent - South",
+    "total_pop":19797,
+    "below_poverty_level_pop":2502,
+    "percent_below_poverty":12.64
+  },
+  {
+    "hra_id":10,
+    "hra_name":"Maple Valley",
+    "total_pop":11264,
+    "below_poverty_level_pop":339,
+    "percent_below_poverty":3.01
+  },
+  {
+    "hra_id":11,
+    "hra_name":"Covington",
+    "total_pop":28358,
+    "below_poverty_level_pop":1489,
+    "percent_below_poverty":5.25
+  },
+  {
+    "hra_id":12,
+    "hra_name":"Kent - Central",
+    "total_pop":19446,
+    "below_poverty_level_pop":2272,
+    "percent_below_poverty":11.68
+  },
+  {
+    "hra_id":13,
+    "hra_name":"Kent - West",
+    "total_pop":39177,
+    "below_poverty_level_pop":5168,
+    "percent_below_poverty":13.19
+  },
+  {
+    "hra_id":14,
+    "hra_name":"Kent - East",
+    "total_pop":38910,
+    "below_poverty_level_pop":3479,
+    "percent_below_poverty":8.94
+  },
+  {
+    "hra_id":15,
+    "hra_name":"Des Moines and Normandy Park",
+    "total_pop":28744,
+    "below_poverty_level_pop":2897,
+    "percent_below_poverty":10.08
+  },
+  {
+    "hra_id":16,
+    "hra_name":"Vashon",
+    "total_pop":11055,
+    "below_poverty_level_pop":929,
+    "percent_below_poverty":8.4
+  },
+  {
+    "hra_id":17,
+    "hra_name":"Fairwood",
+    "total_pop":20353,
+    "below_poverty_level_pop":1537,
+    "percent_below_poverty":7.55
+  },
+  {
+    "hra_id":18,
+    "hra_name":"Seatac",
+    "total_pop":35513,
+    "below_poverty_level_pop":4721,
+    "percent_below_poverty":13.29
+  },
+  {
+    "hra_id":19,
+    "hra_name":"Renton - South",
+    "total_pop":54861,
+    "below_poverty_level_pop":4338,
+    "percent_below_poverty":7.91
+  },
+  {
+    "hra_id":20,
+    "hra_name":"Burien",
+    "total_pop":52022,
+    "below_poverty_level_pop":6162,
+    "percent_below_poverty":11.84
+  },
+  {
+    "hra_id":21,
+    "hra_name":"Tukwila",
+    "total_pop":35117,
+    "below_poverty_level_pop":3776,
+    "percent_below_poverty":10.75
+  },
+  {
+    "hra_id":22,
+    "hra_name":"Newcastle and Four Creeks",
+    "total_pop":49725,
+    "below_poverty_level_pop":3222,
+    "percent_below_poverty":6.48
+  },
+  {
+    "hra_id":23,
+    "hra_name":"Renton - North",
+    "total_pop":53403,
+    "below_poverty_level_pop":3767,
+    "percent_below_poverty":7.05
+  },
+  {
+    "hra_id":24,
+    "hra_name":"Skyway",
+    "total_pop":16993,
+    "below_poverty_level_pop":1714,
+    "percent_below_poverty":10.09
+  },
+  {
+    "hra_id":25,
+    "hra_name":"Snoqualmie and North Bend",
+    "total_pop":12325,
+    "below_poverty_level_pop":954,
+    "percent_below_poverty":7.74
+  },
+  {
+    "hra_id":26,
+    "hra_name":"North Highline and White Center",
+    "total_pop":9078,
+    "below_poverty_level_pop":1150,
+    "percent_below_poverty":12.67
+  },
+  {
+    "hra_id":27,
+    "hra_name":"Seattle - Delridge",
+    "total_pop":37581,
+    "below_poverty_level_pop":5282,
+    "percent_below_poverty":14.05
+  },
+  {
+    "hra_id":28,
+    "hra_name":"Issaquah",
+    "total_pop":31832,
+    "below_poverty_level_pop":1954,
+    "percent_below_poverty":6.14
+  },
+  {
+    "hra_id":29,
+    "hra_name":"Seattle - Rainier Valley and Rainier Beach",
+    "total_pop":40729,
+    "below_poverty_level_pop":4300,
+    "percent_below_poverty":10.56
+  },
+  {
+    "hra_id":30,
+    "hra_name":"Seattle - South Beacon Hill, Georgetown, and South Park",
+    "total_pop":42966,
+    "below_poverty_level_pop":6748,
+    "percent_below_poverty":15.71
+  },
+  {
+    "hra_id":31,
+    "hra_name":"Bellevue - South",
+    "total_pop":30213,
+    "below_poverty_level_pop":1378,
+    "percent_below_poverty":4.56
+  },
+  {
+    "hra_id":32,
+    "hra_name":"Seattle - West Seattle",
+    "total_pop":62705,
+    "below_poverty_level_pop":2918,
+    "percent_below_poverty":4.65
+  },
+  {
+    "hra_id":33,
+    "hra_name":"Mercer Island and Point Cities",
+    "total_pop":40877,
+    "below_poverty_level_pop":1936,
+    "percent_below_poverty":4.74
+  },
+  {
+    "hra_id":34,
+    "hra_name":"Seattle - Central District, Chinatown-International District, Judkins, and North Beacon Hill",
+    "total_pop":41913,
+    "below_poverty_level_pop":5283,
+    "percent_below_poverty":12.6
+  },
+  {
+    "hra_id":35,
+    "hra_name":"Bellevue - West",
+    "total_pop":24744,
+    "below_poverty_level_pop":1017,
+    "percent_below_poverty":4.11
+  },
+  {
+    "hra_id":36,
+    "hra_name":"Bellevue - Central",
+    "total_pop":39197,
+    "below_poverty_level_pop":3447,
+    "percent_below_poverty":8.79
+  },
+  {
+    "hra_id":37,
+    "hra_name":"Sammamish",
+    "total_pop":55778,
+    "below_poverty_level_pop":1998,
+    "percent_below_poverty":3.58
+  },
+  {
+    "hra_id":38,
+    "hra_name":"Duvall, Carnation, Skykomish, and Northeast King County",
+    "total_pop":56355,
+    "below_poverty_level_pop":1164,
+    "percent_below_poverty":2.07
+  },
+  {
+    "hra_id":39,
+    "hra_name":"Seattle - Downtown, Belltown, and First Hill",
+    "total_pop":45664,
+    "below_poverty_level_pop":5795,
+    "percent_below_poverty":12.69
+  },
+  {
+    "hra_id":40,
+    "hra_name":"Bellevue - Northeast",
+    "total_pop":66962,
+    "below_poverty_level_pop":4405,
+    "percent_below_poverty":6.58
+  },
+  {
+    "hra_id":41,
+    "hra_name":"Montlake, Madison Park, and Madrona",
+    "total_pop":11155,
+    "below_poverty_level_pop":830,
+    "percent_below_poverty":7.44
+  },
+  {
+    "hra_id":42,
+    "hra_name":"Seattle - Capitol Hill",
+    "total_pop":39124,
+    "below_poverty_level_pop":4445,
+    "percent_below_poverty":11.36
+  },
+  {
+    "hra_id":43,
+    "hra_name":"Seattle - South Lake Union, Cascade, and Eastlake",
+    "total_pop":32505,
+    "below_poverty_level_pop":2494,
+    "percent_below_poverty":7.67
+  },
+  {
+    "hra_id":44,
+    "hra_name":"Seattle - Queen Anne",
+    "total_pop":30749,
+    "below_poverty_level_pop":2272,
+    "percent_below_poverty":7.39
+  },
+  {
+    "hra_id":45,
+    "hra_name":"Magnolia and Interbay",
+    "total_pop":44825,
+    "below_poverty_level_pop":2766,
+    "percent_below_poverty":6.17
+  },
+  {
+    "hra_id":46,
+    "hra_name":"Fremont and Wallingford",
+    "total_pop":50524,
+    "below_poverty_level_pop":6527,
+    "percent_below_poverty":12.92
+  },
+  {
+    "hra_id":47,
+    "hra_name":"Seattle - University District",
+    "total_pop":22404,
+    "below_poverty_level_pop":4047,
+    "percent_below_poverty":18.06
+  },
+  {
+    "hra_id":48,
+    "hra_name":"Redmond - South",
+    "total_pop":24709,
+    "below_poverty_level_pop":1362,
+    "percent_below_poverty":5.51
+  },
+  {
+    "hra_id":49,
+    "hra_name":"Seattle - Laurelhurst, Sand Point, and Wedgwood",
+    "total_pop":19069,
+    "below_poverty_level_pop":980,
+    "percent_below_poverty":5.14
+  },
+  {
+    "hra_id":50,
+    "hra_name":"Seattle - Ravenna and Bryant",
+    "total_pop":26549,
+    "below_poverty_level_pop":3416,
+    "percent_below_poverty":12.87
+  },
+  {
+    "hra_id":51,
+    "hra_name":"Kirkland - South",
+    "total_pop":48269,
+    "below_poverty_level_pop":2719,
+    "percent_below_poverty":5.63
+  },
+  {
+    "hra_id":52,
+    "hra_name":"Green Lake and Phinney Ridge",
+    "total_pop":35267,
+    "below_poverty_level_pop":2642,
+    "percent_below_poverty":7.49
+  },
+  {
+    "hra_id":53,
+    "hra_name":"Redmond - North",
+    "total_pop":25201,
+    "below_poverty_level_pop":1362,
+    "percent_below_poverty":5.4
+  },
+  {
+    "hra_id":54,
+    "hra_name":"Bear Creek and Greater Sammamish",
+    "total_pop":60797,
+    "below_poverty_level_pop":1633,
+    "percent_below_poverty":2.69
+  },
+  {
+    "hra_id":55,
+    "hra_name":"Seattle - Ballard",
+    "total_pop":67011,
+    "below_poverty_level_pop":3622,
+    "percent_below_poverty":5.41
+  },
+  {
+    "hra_id":56,
+    "hra_name":"Seattle - Northgate and Lake City",
+    "total_pop":32497,
+    "below_poverty_level_pop":2698,
+    "percent_below_poverty":8.3
+  },
+  {
+    "hra_id":57,
+    "hra_name":"Kirkland - North",
+    "total_pop":25133,
+    "below_poverty_level_pop":1040,
+    "percent_below_poverty":4.14
+  },
+  {
+    "hra_id":58,
+    "hra_name":"Seattle - Broadview, Haller Lake, and Licton Springs",
+    "total_pop":51769,
+    "below_poverty_level_pop":5723,
+    "percent_below_poverty":11.05
+  },
+  {
+    "hra_id":59,
+    "hra_name":"Kenmore and Lake Forest Park",
+    "total_pop":45478,
+    "below_poverty_level_pop":2430,
+    "percent_below_poverty":5.34
+  },
+  {
+    "hra_id":60,
+    "hra_name":"Bothell and Woodinville",
+    "total_pop":46824,
+    "below_poverty_level_pop":2756,
+    "percent_below_poverty":5.89
+  },
+  {
+    "hra_id":61,
+    "hra_name":"Shoreline",
+    "total_pop":62548,
+    "below_poverty_level_pop":4736,
+    "percent_below_poverty":7.57
+  }
+]
