@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import { MapContainer, TileLayer, useMap, GeoJSON, LayersControl, LayerGroup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import geoData from "./Data/geoData.json";
 
 function Description() {
@@ -36,6 +36,16 @@ function getChloroplethColor(rate) {
          rate > 120 ? '#FD8D3C' :
          rate > 100 ? '#FEB24C' :
                      '#FED976';
+}
+
+// Add this function to format numbers with commas
+function formatNumber(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Add this function to format percentages
+function formatPercent(num) {
+  return num.toFixed(1) + "%";
 }
 
 function LegendControl({ activeLayer }) {
@@ -111,7 +121,14 @@ function LegendControl({ activeLayer }) {
   return null;
 }
 
-function CircleMarkers({ breastCancerData, activeLayer }) {
+// Move CircleMarkers outside of MapComponent and pass necessary functions as props
+function CircleMarkers({ 
+  breastCancerData, 
+  activeLayer, 
+  getDemographicData, 
+  createPopupContent, 
+  getMarkerColor 
+}) {
   const map = useMap();
 
   useEffect(() => {
@@ -119,29 +136,23 @@ function CircleMarkers({ breastCancerData, activeLayer }) {
   
     const markers = breastCancerData
       .filter(area => area.lat !== undefined && area.lng !== undefined)
-      .map(area =>
-        L.circleMarker([area.lat, area.lng], {
+      .map(area => {
+        const demographics = getDemographicData(area.name);
+        return L.circleMarker([area.lat, area.lng], {
           radius: 8,
           fillColor: getMarkerColor(area.comparison),
           color: "#000",
           weight: 1,
           opacity: 1,
           fillOpacity: 0.8,
-        }).bindPopup(
-          `<div>
-            <h3>${area.name}</h3>
-            <p>${area.rate} per 100,000</p>
-            <p>Cases: ${area.cases}</p>
-            <p>Comparison: ${area.comparison}</p>
-          </div>`
-        )
-      );
+        }).bindPopup(createPopupContent(area.name, area, demographics));
+      });
 
     const layerGroup = L.layerGroup(markers).addTo(map);
     return () => {
       map.removeLayer(layerGroup);
     };
-  }, [map, activeLayer, breastCancerData]);
+  }, [map, activeLayer, breastCancerData, getDemographicData, createPopupContent, getMarkerColor]);
 
   return null;
 }
@@ -182,11 +193,18 @@ function MapComponent() {
   const [breastCancerData, setBreastCancerData] = useState([]);
   const [geoDataWithComparison, setGeoDataWithComparison] = useState(null);
   const [activeLayer, setActiveLayer] = useState(null);
+  const [demographicData, setDemographicData] = useState({
+    race: [],
+    insurance: [],
+    income: []
+  });
 
+  // Fetch breast cancer data
   useEffect(() => {
     fetch("/api/heatmap")
       .then((res) => res.json())
       .then((data) => {
+        console.log("Received heatmap data:", data);
         setBreastCancerData(data.heatmap);
       })
       .catch((err) => {
@@ -194,30 +212,152 @@ function MapComponent() {
       });
   }, []);
 
+  // Fetch demographic data
   useEffect(() => {
+    // Fetch race data
+    fetch("/api/demographics/population-race")
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Received race data:", data);
+        setDemographicData(prev => ({ ...prev, race: data }));
+      })
+      .catch((err) => {
+        console.error("Error fetching race data:", err);
+      });
+
+    // Fetch health insurance data
+    fetch("/api/demographics/health-insurance")
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Received insurance data:", data);
+        setDemographicData(prev => ({ ...prev, insurance: data }));
+      })
+      .catch((err) => {
+        console.error("Error fetching insurance data:", err);
+      });
+
+    // Fetch income data
+    fetch("/api/demographics/median-income")
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Received income data:", data);
+        setDemographicData(prev => ({ ...prev, income: data }));
+      })
+      .catch((err) => {
+        console.error("Error fetching income data:", err);
+      });
+  }, []);
+
+  // Helper functions
+  const getDemographicData = useCallback((regionName) => {
+    const raceData = demographicData.race.find(d => d.hra_name === regionName);
+    const insuranceData = demographicData.insurance.find(d => d.hra_name === regionName);
+    const incomeData = demographicData.income.find(d => d.hra_name === regionName);
+    return { raceData, insuranceData, incomeData };
+  }, [demographicData]);
+
+  const createPopupContent = useCallback((name, cancerData, demographics) => {
+    const { raceData, insuranceData, incomeData } = demographics;
+    
+    return `
+      <div class="popup-content" style="max-width: 300px; font-family: Arial, sans-serif;">
+        <h3 style="margin: 0 0 10px 0; color: #333;">${name}</h3>
+        
+        <div style="margin-bottom: 15px;">
+          <strong>Breast Cancer Statistics:</strong>
+          <div>Rate: ${cancerData.rate} per 100,000</div>
+          <div>Cases: ${cancerData.cases}</div>
+          <div>Comparison to average: ${cancerData.comparison}</div>
+        </div>
+
+        ${raceData ? `
+          <div style="margin-bottom: 15px;">
+            <strong>Demographics:</strong>
+            <div>Total Population: ${formatNumber(raceData.total_pop)}</div>
+            <div>White: ${formatPercent(raceData.white_pop_pct)}</div>
+            <div>Asian: ${formatPercent(raceData.asian_pop_pct)}</div>
+            <div>Black/African American: ${formatPercent(raceData.black_african_american_pop_pct)}</div>
+            <div>Hispanic/Latino: ${formatPercent(raceData.hispanic_latino_pop_pct)}</div>
+          </div>
+        ` : ''}
+
+        ${insuranceData ? `
+          <div style="margin-bottom: 15px;">
+            <strong>Health Insurance:</strong>
+            <div>Uninsured: ${formatPercent(insuranceData.percent_uninsured)}</div>
+          </div>
+        ` : ''}
+
+        ${incomeData ? `
+          <div style="margin-bottom: 15px;">
+            <strong>Economic:</strong>
+            <div>Median Income: $${formatNumber(Math.round(incomeData.median_income))}</div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }, [formatNumber, formatPercent]);
+
+  useEffect(() => {
+    if (!breastCancerData.length) return;
+
     const updatedGeoData = geoData.features.map((feature) => {
       const cancerData = breastCancerData.find(
         (data) => data.name === feature.properties.name
       );
 
       if (cancerData) {
-        feature.properties.comparison = cancerData.comparison;
-        feature.properties.rate = cancerData.rate;
-        feature.properties.cases = cancerData.cases;
+        return {
+          ...feature,
+          properties: {
+            ...feature.properties,
+            comparison: cancerData.comparison,
+            rate: cancerData.rate,
+            cases: cancerData.cases
+          }
+        };
       }
       return feature;
     });
 
+    console.log('Updated GeoData:', updatedGeoData); // Add this for debugging
     setGeoDataWithComparison(updatedGeoData);
   }, [breastCancerData]);
 
-  const geoJSONStyle = (feature) => ({
-    fillColor: getChloroplethColor(feature.properties.rate),
-    color: "#000",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.7,
-  });
+  // Move onEachFeature to a useCallback to maintain consistency
+  const onEachFeature = useCallback((feature, layer) => {
+    const cancerData = breastCancerData.find(
+      (data) => data.name === feature.properties.name
+    );
+    if (cancerData) {
+      const demographics = getDemographicData(feature.properties.name);
+      const popupContent = createPopupContent(feature.properties.name, cancerData, demographics);
+      layer.bindPopup(popupContent);
+    }
+  }, [breastCancerData, getDemographicData, createPopupContent]);
+
+  // Update the GeoJSON style function
+  const geoJSONStyle = useCallback((feature) => {
+    const cancerData = breastCancerData.find(
+      (data) => data.name === feature.properties.name
+    );
+    return {
+      fillColor: cancerData ? getChloroplethColor(cancerData.rate) : '#FED976',
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.7,
+    };
+  }, [breastCancerData]);
 
   return (
     <div>
@@ -239,18 +379,13 @@ function MapComponent() {
             <LayerGroup>
               {geoDataWithComparison && (
                 <GeoJSON
-                  data={{ type: "FeatureCollection", features: geoDataWithComparison }}
-                  style={geoJSONStyle}
-                  onEachFeature={(feature, layer) => {
-                    layer.bindPopup(
-                      `<div>
-                        <h3>${feature.properties.name}</h3>
-                        <p>${feature.properties.rate} per 100,000</p>
-                        <p>Cases: ${feature.properties.cases}</p>
-                        <p>Comparison: ${feature.properties.comparison}</p>
-                      </div>`
-                    );
+                  key={JSON.stringify(geoDataWithComparison)} // Add this to ensure proper updates
+                  data={{ 
+                    type: "FeatureCollection", 
+                    features: geoDataWithComparison 
                   }}
+                  style={geoJSONStyle}
+                  onEachFeature={onEachFeature}
                 />
               )}
             </LayerGroup>
@@ -261,7 +396,13 @@ function MapComponent() {
             checked={false}
           >
             <LayerGroup>
-              <CircleMarkers breastCancerData={breastCancerData} activeLayer={activeLayer} />
+              <CircleMarkers 
+                breastCancerData={breastCancerData} 
+                activeLayer={activeLayer}
+                getDemographicData={getDemographicData}
+                createPopupContent={createPopupContent}
+                getMarkerColor={getMarkerColor}
+              />
             </LayerGroup>
           </LayersControl.Overlay>
         </LayersControl>
