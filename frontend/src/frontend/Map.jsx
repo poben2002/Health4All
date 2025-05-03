@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import { MapContainer, TileLayer, useMap, GeoJSON, LayersControl, LayerGroup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import geoData from "./Data/geoData.json";
 
 function Description() {
@@ -213,10 +213,16 @@ function MapComponent() {
   useEffect(() => {
     console.log("Fetching from:", `${apiBaseUrl}/api/heatmap`);
     fetch(`${apiBaseUrl}/api/heatmap`)
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("Heatmap response status:", res.status);
+        return res.json();
+      })
       .then((data) => {
         console.log("Received heatmap data:", data);
-        setBreastCancerData(data.heatmap);
+        console.log("Heatmap data type:", typeof data);
+        console.log("Heatmap data structure:", data ? Object.keys(data) : "null or undefined");
+        console.log("Heatmap array length:", data?.heatmap?.length);
+        setBreastCancerData(data.heatmap || []);
       })
       .catch((err) => {
         console.error("Error fetching heatmap data:", err);
@@ -319,7 +325,13 @@ function MapComponent() {
   }, [formatNumber, formatPercent]);
 
   useEffect(() => {
-    if (!breastCancerData.length) return;
+    if (!breastCancerData.length) {
+      console.log("No breast cancer data available yet, skipping GeoJSON update");
+      return;
+    }
+
+    console.log("Updating GeoJSON with breast cancer data:", breastCancerData.length, "items");
+    console.log("Original geoData features:", geoData.features.length);
 
     const updatedGeoData = geoData.features.map((feature) => {
       const cancerData = breastCancerData.find(
@@ -327,6 +339,7 @@ function MapComponent() {
       );
 
       if (cancerData) {
+        console.log("Found matching cancer data for:", feature.properties.name);
         return {
           ...feature,
           properties: {
@@ -340,35 +353,80 @@ function MapComponent() {
       return feature;
     });
 
-    console.log('Updated GeoData:', updatedGeoData); // Add this for debugging
+    console.log('Updated GeoData:', updatedGeoData.length, "features"); 
+    console.log('Sample feature:', updatedGeoData[0]);
     setGeoDataWithComparison(updatedGeoData);
   }, [breastCancerData]);
 
-  // Move onEachFeature to a useCallback to maintain consistency
-  const onEachFeature = useCallback((feature, layer) => {
-    const cancerData = breastCancerData.find(
-      (data) => data.name === feature.properties.name
-    );
-    if (cancerData) {
-      const demographics = getDemographicData(feature.properties.name);
-      const popupContent = createPopupContent(feature.properties.name, cancerData, demographics);
-      layer.bindPopup(popupContent);
-    }
-  }, [breastCancerData, getDemographicData, createPopupContent]);
+  // Add debugging for layer state
+  useEffect(() => {
+    console.log("Active layer:", activeLayer);
+    console.log("GeoData with comparison:", geoDataWithComparison ? geoDataWithComparison.length : "not set");
+  }, [activeLayer, geoDataWithComparison]);
 
-  // Update the GeoJSON style function
-  const geoJSONStyle = useCallback((feature) => {
-    const cancerData = breastCancerData.find(
-      (data) => data.name === feature.properties.name
-    );
-    return {
-      fillColor: cancerData ? getChloroplethColor(cancerData.rate) : '#FED976',
-      color: "#000",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.7,
-    };
-  }, [breastCancerData]);
+  // Add direct GeoJSON rendering without relying on LayersControl
+  const mapRef = useRef(null);
+  
+  // Get map reference
+  const GetMapRef = () => {
+    const map = useMap();
+    mapRef.current = map;
+    return null;
+  };
+  
+  // Directly add GeoJSON to map when data is ready
+  useEffect(() => {
+    if (!mapRef.current || !geoDataWithComparison || !breastCancerData.length) {
+      console.log("Cannot add GeoJSON layer yet - missing dependencies");
+      return;
+    }
+    
+    console.log("Attempting to add GeoJSON layer directly to map");
+    
+    // Remove any existing layer
+    if (window.currentGeoLayer) {
+      mapRef.current.removeLayer(window.currentGeoLayer);
+    }
+    
+    // Create and add the new layer
+    window.currentGeoLayer = L.geoJSON({
+      type: "FeatureCollection",
+      features: geoDataWithComparison
+    }, {
+      style: (feature) => {
+        const cancerData = breastCancerData.find(
+          (data) => data.name === feature.properties.name
+        );
+        return {
+          fillColor: cancerData ? getChloroplethColor(cancerData.rate) : '#FED976',
+          color: "#000",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.7,
+        };
+      },
+      onEachFeature: (feature, layer) => {
+        const cancerData = breastCancerData.find(
+          (data) => data.name === feature.properties.name
+        );
+        if (cancerData) {
+          const demographics = getDemographicData(feature.properties.name);
+          const popupContent = createPopupContent(feature.properties.name, cancerData, demographics);
+          layer.bindPopup(popupContent);
+        }
+      }
+    }).addTo(mapRef.current);
+    
+    console.log("GeoJSON layer added to map");
+    
+  }, [geoDataWithComparison, breastCancerData, getDemographicData, createPopupContent]);
+
+  // Initialize the active layer
+  useEffect(() => {
+    // Set the default layer to geoJSON (Chloropleth)
+    setActiveLayer('geoJSON');
+    console.log("Setting initial active layer to geoJSON");
+  }, []);
 
   return (
     <div>
@@ -382,10 +440,11 @@ function MapComponent() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
+        <GetMapRef />
         <LayersControl position="topright">
           <LayersControl.Overlay
             name="Chloropleth Layer"
-            checked={false}
+            checked={true}
           >
             <LayerGroup>
               {geoDataWithComparison && (
