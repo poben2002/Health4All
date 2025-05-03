@@ -6,7 +6,6 @@ import L from "leaflet";
 import { useEffect, useState } from "react";
 import geoData from "./Data/geoData.json";
 
-
 function Description() {
   return (
     <section className="pt-4">
@@ -55,52 +54,53 @@ function LegendControl({ activeLayer }) {
         font-size: 16px;
         font-family: Inter, sans-serif;
         width: fit-content;
-        display: ${activeLayer ? 'block' : 'none'};  // Hide legend when no layer is active
       `;
       
-      if (activeLayer === 'circleMarkers') {
-        div.innerHTML = `
-          <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center;">Markers Legend</h4>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #ff0000; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
-            <strong>Higher Rate</strong>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #00ff00; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
-            <strong>Lower Rate</strong>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #ffff00; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
-            <strong>No Difference</strong>
-          </div>`;
-      } else {
-        div.innerHTML = `
-          <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center;">Rate per 100,000</h4>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #800026; display: inline-block; margin-right: 10px;"></span>
-            <strong>200+</strong>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #BD0026; display: inline-block; margin-right: 10px;"></span>
-            <strong>180-200</strong>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #E31A1C; display: inline-block; margin-right: 10px;"></span>
-            <strong>160-180</strong>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #FC4E2A; display: inline-block; margin-right: 10px;"></span>
-            <strong>140-160</strong>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #FD8D3C; display: inline-block; margin-right: 10px;"></span>
-            <strong>120-140</strong>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="width: 20px; height: 20px; background: #FEB24C; display: inline-block; margin-right: 10px;"></span>
-            <strong>100-120</strong>
-          </div>`;
-      }
+      // Show legend based on active layer
+      const markerLegend = `
+        <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center;">Markers Legend</h4>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #ff0000; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
+          <strong>Higher Rate</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #00ff00; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
+          <strong>Lower Rate</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+          <span style="width: 20px; height: 20px; background: #ffff00; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
+          <strong>No Difference</strong>
+        </div>`;
+
+      const chloroplethLegend = `
+        <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center;">Rate per 100,000</h4>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #800026; display: inline-block; margin-right: 10px;"></span>
+          <strong>200+</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #BD0026; display: inline-block; margin-right: 10px;"></span>
+          <strong>180-200</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #E31A1C; display: inline-block; margin-right: 10px;"></span>
+          <strong>160-180</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #FC4E2A; display: inline-block; margin-right: 10px;"></span>
+          <strong>140-160</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #FD8D3C; display: inline-block; margin-right: 10px;"></span>
+          <strong>120-140</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+          <span style="width: 20px; height: 20px; background: #FEB24C; display: inline-block; margin-right: 10px;"></span>
+          <strong>100-120</strong>
+        </div>`;
+
+      div.innerHTML = activeLayer === 'circleMarkers' ? markerLegend : 
+                     activeLayer === 'geoJSON' ? chloroplethLegend : '';
       return div;
     };
     legend.addTo(map);
@@ -151,14 +151,18 @@ function LayerHandler({ setActiveLayer }) {
 
   useEffect(() => {
     const handleLayerChange = (e) => {
-      if (e.type === "overlayadd") {
-        if (e.name === "Circle Markers Layer") {
+      if (e.name === "Circle Markers Layer") {
+        if (e.type === "overlayadd") {
           setActiveLayer('circleMarkers');
-        } else if (e.name === "Chloropleth Layer") {
-          setActiveLayer('geoJSON');
+        } else if (e.type === "overlayremove") {
+          setActiveLayer(null);
         }
-      } else if (e.type === "overlayremove") {
-        setActiveLayer(null);  // Set to null when layer is removed
+      } else if (e.name === "Chloropleth Layer") {
+        if (e.type === "overlayadd") {
+          setActiveLayer('geoJSON');
+        } else if (e.type === "overlayremove") {
+          setActiveLayer(null);
+        }
       }
     };
 
@@ -178,7 +182,6 @@ function MapComponent() {
   const [breastCancerData, setBreastCancerData] = useState([]);
   const [geoDataWithComparison, setGeoDataWithComparison] = useState(null);
   const [activeLayer, setActiveLayer] = useState(null);
-  const [demographicData, setDemographicData] = useState(null);
 
   useEffect(() => {
     fetch("/api/heatmap")
@@ -208,18 +211,6 @@ function MapComponent() {
     setGeoDataWithComparison(updatedGeoData);
   }, [breastCancerData]);
 
-  useEffect(() => {
-    // Fetch demographic data
-    fetch("/api/demographics")
-      .then((res) => res.json())
-      .then((data) => {
-        setDemographicData(data);
-      })
-      .catch((err) => {
-        console.error("Error fetching demographic data:", err);
-      });
-  }, []);
-
   const geoJSONStyle = (feature) => ({
     fillColor: getChloroplethColor(feature.properties.rate),
     color: "#000",
@@ -227,84 +218,6 @@ function MapComponent() {
     opacity: 1,
     fillOpacity: 0.7,
   });
-
-  // Create enhanced popup content with demographic data
-  const createPopupContent = (name, rate, cases, comparison) => {
-    const areaData = demographicData?.[name];
-    if (!areaData) return `
-      <div>
-        <h3>${name}</h3>
-        <p>${rate} per 100,000</p>
-        <p>Cases: ${cases}</p>
-        <p>Comparison: ${comparison}</p>
-      </div>
-    `;
-
-    return `
-      <div class="popup-content">
-        <h3>${name}</h3>
-        <div class="popup-section">
-          <h4>Cancer Statistics</h4>
-          <p>Rate: ${rate} per 100,000</p>
-          <p>Cases: ${cases}</p>
-          <p>Comparison: ${comparison}</p>
-        </div>
-        
-        <div class="popup-section">
-          <h4>Demographics</h4>
-          <div class="demographic-chart">
-            <div style="width: ${areaData.race.white}%; background: #1f77b4;">White ${areaData.race.white}%</div>
-            <div style="width: ${areaData.race.asian}%; background: #2ca02c;">Asian ${areaData.race.asian}%</div>
-            <div style="width: ${areaData.race.black}%; background: #ff7f0e;">Black ${areaData.race.black}%</div>
-            <div style="width: ${areaData.race.hispanic}%; background: #d62728;">Hispanic ${areaData.race.hispanic}%</div>
-            <div style="width: ${areaData.race.multiracial}%; background: #9467bd;">Multiple ${areaData.race.multiracial}%</div>
-          </div>
-        </div>
-
-        <div class="popup-section">
-          <h4>Health Insurance</h4>
-          <p>Uninsured: ${areaData.health.uninsured}%</p>
-        </div>
-      </div>
-    `;
-  };
-
-  // Update your GeoJSON and CircleMarkers components to use the new popup content
-  const onEachFeature = (feature, layer) => {
-    if (feature.properties) {
-      layer.bindPopup(`
-        <div>
-          <h3>${feature.properties.name}</h3>
-          <p>${feature.properties.rate} per 100,000</p>
-          <p>Cases: ${feature.properties.cases}</p>
-          <p>Comparison: ${feature.properties.comparison}</p>
-        </div>
-      `);
-    }
-  };
-
-  // Add some CSS for the popup styling
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      .popup-content {
-        max-width: 300px;
-        padding: 10px;
-      }
-      .popup-section {
-        margin: 10px 0;
-      }
-      .demographic-chart div {
-        height: 20px;
-        margin: 2px 0;
-        color: white;
-        padding: 2px;
-        font-size: 12px;
-      }
-    `;
-    document.head.appendChild(style);
-    return () => document.head.removeChild(style);
-  }, []);
 
   return (
     <div>
@@ -328,7 +241,16 @@ function MapComponent() {
                 <GeoJSON
                   data={{ type: "FeatureCollection", features: geoDataWithComparison }}
                   style={geoJSONStyle}
-                  onEachFeature={onEachFeature}
+                  onEachFeature={(feature, layer) => {
+                    layer.bindPopup(
+                      `<div>
+                        <h3>${feature.properties.name}</h3>
+                        <p>${feature.properties.rate} per 100,000</p>
+                        <p>Cases: ${feature.properties.cases}</p>
+                        <p>Comparison: ${feature.properties.comparison}</p>
+                      </div>`
+                    );
+                  }}
                 />
               )}
             </LayerGroup>

@@ -19,6 +19,8 @@ app.use('/api/city-details', cityDetailsRoutes);
 const citiesRoutes = require('./routes/citiesRoutes');
 app.use('/api/cities', citiesRoutes);
 
+const demographicsRoutes = require('./routes/demographicsRoutes');
+app.use('/api/demographics', demographicsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

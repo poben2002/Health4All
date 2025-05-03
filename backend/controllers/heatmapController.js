@@ -3,19 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const breastCancerData = require('../data/breastCancerRateData.json');
 
-// Load fullData.json once at startup
-const fullDataPath = path.join(__dirname, '../data/cancer_data.json');
-let heatmapData = [];
-
-try {
-  const fileContent = fs.readFileSync(fullDataPath, 'utf8');
-  heatmapData = JSON.parse(fileContent);
-} catch (error) {
-  console.error('Error reading fullData.json:', error);
-  // Fallback to breast cancer data if cancer_data.json is not available
-  heatmapData = breastCancerData.heatmap;
-}
-
 // Helper: filter function based on query params
 function applyFilters(data, query) {
   if (!query || Object.keys(query).length === 0) {
@@ -35,7 +22,7 @@ function applyFilters(data, query) {
 
 // Controller function
 const getHeatmapData = (req, res) => {
-  const filteredData = applyFilters(heatmapData, req.query);
+  const filteredData = applyFilters(breastCancerData.heatmap, req.query);
   res.json({ heatmap: filteredData });
 };
 
