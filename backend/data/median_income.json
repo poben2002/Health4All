@@ -1,0 +1,307 @@
+[
+  {
+    "hra_id":1,
+    "hra_name":"Enumclaw, Black Diamond, and Southeast King County",
+    "median_income":94806.67
+  },
+  {
+    "hra_id":2,
+    "hra_name":"Auburn - South",
+    "median_income":76575.43
+  },
+  {
+    "hra_id":3,
+    "hra_name":"Federal Way - Dash Point and Southern Rim",
+    "median_income":82721.5
+  },
+  {
+    "hra_id":4,
+    "hra_name":"Lakeland, Algona, Pacific, and Milton",
+    "median_income":84091.0
+  },
+  {
+    "hra_id":5,
+    "hra_name":"Auburn - North",
+    "median_income":78440.38
+  },
+  {
+    "hra_id":6,
+    "hra_name":"Federal Way - Central",
+    "median_income":68967.0
+  },
+  {
+    "hra_id":7,
+    "hra_name":"Federal Way - North Corridor",
+    "median_income":62082.67
+  },
+  {
+    "hra_id":8,
+    "hra_name":"East Highlands, Hobart, and Greater Maple Valley",
+    "median_income":115663.67
+  },
+  {
+    "hra_id":9,
+    "hra_name":"Kent - South",
+    "median_income":79487.2
+  },
+  {
+    "hra_id":10,
+    "hra_name":"Maple Valley",
+    "median_income":110851.5
+  },
+  {
+    "hra_id":11,
+    "hra_name":"Covington",
+    "median_income":108193.17
+  },
+  {
+    "hra_id":12,
+    "hra_name":"Kent - Central",
+    "median_income":71582.75
+  },
+  {
+    "hra_id":13,
+    "hra_name":"Kent - West",
+    "median_income":68044.62
+  },
+  {
+    "hra_id":14,
+    "hra_name":"Kent - East",
+    "median_income":86372.0
+  },
+  {
+    "hra_id":15,
+    "hra_name":"Des Moines and Normandy Park",
+    "median_income":65718.17
+  },
+  {
+    "hra_id":16,
+    "hra_name":"Vashon",
+    "median_income":54771.33
+  },
+  {
+    "hra_id":17,
+    "hra_name":"Fairwood",
+    "median_income":95701.0
+  },
+  {
+    "hra_id":18,
+    "hra_name":"Seatac",
+    "median_income":71150.71
+  },
+  {
+    "hra_id":19,
+    "hra_name":"Renton - South",
+    "median_income":78148.42
+  },
+  {
+    "hra_id":20,
+    "hra_name":"Burien",
+    "median_income":76062.0
+  },
+  {
+    "hra_id":21,
+    "hra_name":"Tukwila",
+    "median_income":69669.71
+  },
+  {
+    "hra_id":22,
+    "hra_name":"Newcastle and Four Creeks",
+    "median_income":122349.6
+  },
+  {
+    "hra_id":23,
+    "hra_name":"Renton - North",
+    "median_income":92204.08
+  },
+  {
+    "hra_id":24,
+    "hra_name":"Skyway",
+    "median_income":86309.0
+  },
+  {
+    "hra_id":25,
+    "hra_name":"Snoqualmie and North Bend",
+    "median_income":145398.5
+  },
+  {
+    "hra_id":26,
+    "hra_name":"North Highline and White Center",
+    "median_income":71648.0
+  },
+  {
+    "hra_id":27,
+    "hra_name":"Seattle - Delridge",
+    "median_income":77188.0
+  },
+  {
+    "hra_id":28,
+    "hra_name":"Issaquah",
+    "median_income":133574.67
+  },
+  {
+    "hra_id":29,
+    "hra_name":"Seattle - Rainier Valley and Rainier Beach",
+    "median_income":104333.89
+  },
+  {
+    "hra_id":30,
+    "hra_name":"Seattle - South Beacon Hill, Georgetown, and South Park",
+    "median_income":71074.3
+  },
+  {
+    "hra_id":31,
+    "hra_name":"Bellevue - South",
+    "median_income":156979.14
+  },
+  {
+    "hra_id":32,
+    "hra_name":"Seattle - West Seattle",
+    "median_income":115976.79
+  },
+  {
+    "hra_id":33,
+    "hra_name":"Mercer Island and Point Cities",
+    "median_income":182741.5
+  },
+  {
+    "hra_id":34,
+    "hra_name":"Seattle - Central District, Chinatown-International District, Judkins, and North Beacon Hill",
+    "median_income":92611.22
+  },
+  {
+    "hra_id":35,
+    "hra_name":"Bellevue - West",
+    "median_income":154136.0
+  },
+  {
+    "hra_id":36,
+    "hra_name":"Bellevue - Central",
+    "median_income":119879.62
+  },
+  {
+    "hra_id":37,
+    "hra_name":"Sammamish",
+    "median_income":187360.0
+  },
+  {
+    "hra_id":38,
+    "hra_name":"Duvall, Carnation, Skykomish, and Northeast King County",
+    "median_income":130973.67
+  },
+  {
+    "hra_id":39,
+    "hra_name":"Seattle - Downtown, Belltown, and First Hill",
+    "median_income":87434.36
+  },
+  {
+    "hra_id":40,
+    "hra_name":"Bellevue - Northeast",
+    "median_income":130471.21
+  },
+  {
+    "hra_id":41,
+    "hra_name":"Montlake, Madison Park, and Madrona",
+    "median_income":120284.5
+  },
+  {
+    "hra_id":42,
+    "hra_name":"Seattle - Capitol Hill",
+    "median_income":90532.0
+  },
+  {
+    "hra_id":43,
+    "hra_name":"Seattle - South Lake Union, Cascade, and Eastlake",
+    "median_income":109995.12
+  },
+  {
+    "hra_id":44,
+    "hra_name":"Seattle - Queen Anne",
+    "median_income":108639.12
+  },
+  {
+    "hra_id":45,
+    "hra_name":"Magnolia and Interbay",
+    "median_income":120929.9
+  },
+  {
+    "hra_id":46,
+    "hra_name":"Fremont and Wallingford",
+    "median_income":92801.54
+  },
+  {
+    "hra_id":47,
+    "hra_name":"Seattle - University District",
+    "median_income":82307.0
+  },
+  {
+    "hra_id":48,
+    "hra_name":"Redmond - South",
+    "median_income":127883.0
+  },
+  {
+    "hra_id":49,
+    "hra_name":"Seattle - Laurelhurst, Sand Point, and Wedgwood",
+    "median_income":130391.6
+  },
+  {
+    "hra_id":50,
+    "hra_name":"Seattle - Ravenna and Bryant",
+    "median_income":113086.14
+  },
+  {
+    "hra_id":51,
+    "hra_name":"Kirkland - South",
+    "median_income":124417.4
+  },
+  {
+    "hra_id":52,
+    "hra_name":"Green Lake and Phinney Ridge",
+    "median_income":113265.5
+  },
+  {
+    "hra_id":53,
+    "hra_name":"Redmond - North",
+    "median_income":129678.25
+  },
+  {
+    "hra_id":54,
+    "hra_name":"Bear Creek and Greater Sammamish",
+    "median_income":165925.42
+  },
+  {
+    "hra_id":55,
+    "hra_name":"Seattle - Ballard",
+    "median_income":118301.73
+  },
+  {
+    "hra_id":56,
+    "hra_name":"Seattle - Northgate and Lake City",
+    "median_income":115609.0
+  },
+  {
+    "hra_id":57,
+    "hra_name":"Kirkland - North",
+    "median_income":120498.0
+  },
+  {
+    "hra_id":58,
+    "hra_name":"Seattle - Broadview, Haller Lake, and Licton Springs",
+    "median_income":74708.67
+  },
+  {
+    "hra_id":59,
+    "hra_name":"Kenmore and Lake Forest Park",
+    "median_income":116890.22
+  },
+  {
+    "hra_id":60,
+    "hra_name":"Bothell and Woodinville",
+    "median_income":111625.78
+  },
+  {
+    "hra_id":61,
+    "hra_name":"Shoreline",
+    "median_income":96018.86
+  }
+]

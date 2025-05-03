@@ -1,0 +1,429 @@
+[
+  {
+    "hra_id":1,
+    "hra_name":"Enumclaw, Black Diamond, and Southeast King County",
+    "total_pop":64175,
+    "total_uninsured_pop":4542,
+    "percent_uninsured":7.08
+  },
+  {
+    "hra_id":2,
+    "hra_name":"Auburn - South",
+    "total_pop":31738,
+    "total_uninsured_pop":2741,
+    "percent_uninsured":8.64
+  },
+  {
+    "hra_id":3,
+    "hra_name":"Federal Way - Dash Point and Southern Rim",
+    "total_pop":41490,
+    "total_uninsured_pop":2599,
+    "percent_uninsured":6.26
+  },
+  {
+    "hra_id":4,
+    "hra_name":"Lakeland, Algona, Pacific, and Milton",
+    "total_pop":30212,
+    "total_uninsured_pop":1762,
+    "percent_uninsured":5.83
+  },
+  {
+    "hra_id":5,
+    "hra_name":"Auburn - North",
+    "total_pop":41372,
+    "total_uninsured_pop":2703,
+    "percent_uninsured":6.53
+  },
+  {
+    "hra_id":6,
+    "hra_name":"Federal Way - Central",
+    "total_pop":36271,
+    "total_uninsured_pop":3013,
+    "percent_uninsured":8.31
+  },
+  {
+    "hra_id":7,
+    "hra_name":"Federal Way - North Corridor",
+    "total_pop":29403,
+    "total_uninsured_pop":3206,
+    "percent_uninsured":10.9
+  },
+  {
+    "hra_id":8,
+    "hra_name":"East Highlands, Hobart, and Greater Maple Valley",
+    "total_pop":38950,
+    "total_uninsured_pop":1353,
+    "percent_uninsured":3.47
+  },
+  {
+    "hra_id":9,
+    "hra_name":"Kent - South",
+    "total_pop":19797,
+    "total_uninsured_pop":1130,
+    "percent_uninsured":5.71
+  },
+  {
+    "hra_id":10,
+    "hra_name":"Maple Valley",
+    "total_pop":11264,
+    "total_uninsured_pop":282,
+    "percent_uninsured":2.5
+  },
+  {
+    "hra_id":11,
+    "hra_name":"Covington",
+    "total_pop":28358,
+    "total_uninsured_pop":1301,
+    "percent_uninsured":4.59
+  },
+  {
+    "hra_id":12,
+    "hra_name":"Kent - Central",
+    "total_pop":19446,
+    "total_uninsured_pop":1581,
+    "percent_uninsured":8.13
+  },
+  {
+    "hra_id":13,
+    "hra_name":"Kent - West",
+    "total_pop":39177,
+    "total_uninsured_pop":3722,
+    "percent_uninsured":9.5
+  },
+  {
+    "hra_id":14,
+    "hra_name":"Kent - East",
+    "total_pop":38910,
+    "total_uninsured_pop":2564,
+    "percent_uninsured":6.59
+  },
+  {
+    "hra_id":15,
+    "hra_name":"Des Moines and Normandy Park",
+    "total_pop":28744,
+    "total_uninsured_pop":3669,
+    "percent_uninsured":12.76
+  },
+  {
+    "hra_id":16,
+    "hra_name":"Vashon",
+    "total_pop":11055,
+    "total_uninsured_pop":525,
+    "percent_uninsured":4.75
+  },
+  {
+    "hra_id":17,
+    "hra_name":"Fairwood",
+    "total_pop":20353,
+    "total_uninsured_pop":861,
+    "percent_uninsured":4.23
+  },
+  {
+    "hra_id":18,
+    "hra_name":"Seatac",
+    "total_pop":35513,
+    "total_uninsured_pop":3035,
+    "percent_uninsured":8.55
+  },
+  {
+    "hra_id":19,
+    "hra_name":"Renton - South",
+    "total_pop":54861,
+    "total_uninsured_pop":3233,
+    "percent_uninsured":5.89
+  },
+  {
+    "hra_id":20,
+    "hra_name":"Burien",
+    "total_pop":52022,
+    "total_uninsured_pop":4706,
+    "percent_uninsured":9.05
+  },
+  {
+    "hra_id":21,
+    "hra_name":"Tukwila",
+    "total_pop":35117,
+    "total_uninsured_pop":3656,
+    "percent_uninsured":10.41
+  },
+  {
+    "hra_id":22,
+    "hra_name":"Newcastle and Four Creeks",
+    "total_pop":49725,
+    "total_uninsured_pop":3224,
+    "percent_uninsured":6.48
+  },
+  {
+    "hra_id":23,
+    "hra_name":"Renton - North",
+    "total_pop":53403,
+    "total_uninsured_pop":3770,
+    "percent_uninsured":7.06
+  },
+  {
+    "hra_id":24,
+    "hra_name":"Skyway",
+    "total_pop":16993,
+    "total_uninsured_pop":696,
+    "percent_uninsured":4.1
+  },
+  {
+    "hra_id":25,
+    "hra_name":"Snoqualmie and North Bend",
+    "total_pop":12325,
+    "total_uninsured_pop":905,
+    "percent_uninsured":7.34
+  },
+  {
+    "hra_id":26,
+    "hra_name":"North Highline and White Center",
+    "total_pop":9078,
+    "total_uninsured_pop":991,
+    "percent_uninsured":10.92
+  },
+  {
+    "hra_id":27,
+    "hra_name":"Seattle - Delridge",
+    "total_pop":37581,
+    "total_uninsured_pop":2430,
+    "percent_uninsured":6.47
+  },
+  {
+    "hra_id":28,
+    "hra_name":"Issaquah",
+    "total_pop":31832,
+    "total_uninsured_pop":800,
+    "percent_uninsured":2.51
+  },
+  {
+    "hra_id":29,
+    "hra_name":"Seattle - Rainier Valley and Rainier Beach",
+    "total_pop":40729,
+    "total_uninsured_pop":2656,
+    "percent_uninsured":6.52
+  },
+  {
+    "hra_id":30,
+    "hra_name":"Seattle - South Beacon Hill, Georgetown, and South Park",
+    "total_pop":42966,
+    "total_uninsured_pop":2728,
+    "percent_uninsured":6.35
+  },
+  {
+    "hra_id":31,
+    "hra_name":"Bellevue - South",
+    "total_pop":30213,
+    "total_uninsured_pop":886,
+    "percent_uninsured":2.93
+  },
+  {
+    "hra_id":32,
+    "hra_name":"Seattle - West Seattle",
+    "total_pop":62705,
+    "total_uninsured_pop":2087,
+    "percent_uninsured":3.33
+  },
+  {
+    "hra_id":33,
+    "hra_name":"Mercer Island and Point Cities",
+    "total_pop":40877,
+    "total_uninsured_pop":655,
+    "percent_uninsured":1.6
+  },
+  {
+    "hra_id":34,
+    "hra_name":"Seattle - Central District, Chinatown-International District, Judkins, and North Beacon Hill",
+    "total_pop":41913,
+    "total_uninsured_pop":2669,
+    "percent_uninsured":6.37
+  },
+  {
+    "hra_id":35,
+    "hra_name":"Bellevue - West",
+    "total_pop":24744,
+    "total_uninsured_pop":748,
+    "percent_uninsured":3.02
+  },
+  {
+    "hra_id":36,
+    "hra_name":"Bellevue - Central",
+    "total_pop":39197,
+    "total_uninsured_pop":2163,
+    "percent_uninsured":5.52
+  },
+  {
+    "hra_id":37,
+    "hra_name":"Sammamish",
+    "total_pop":55778,
+    "total_uninsured_pop":1129,
+    "percent_uninsured":2.02
+  },
+  {
+    "hra_id":38,
+    "hra_name":"Duvall, Carnation, Skykomish, and Northeast King County",
+    "total_pop":56355,
+    "total_uninsured_pop":1466,
+    "percent_uninsured":2.6
+  },
+  {
+    "hra_id":39,
+    "hra_name":"Seattle - Downtown, Belltown, and First Hill",
+    "total_pop":45664,
+    "total_uninsured_pop":2150,
+    "percent_uninsured":4.71
+  },
+  {
+    "hra_id":40,
+    "hra_name":"Bellevue - Northeast",
+    "total_pop":66962,
+    "total_uninsured_pop":2331,
+    "percent_uninsured":3.48
+  },
+  {
+    "hra_id":41,
+    "hra_name":"Montlake, Madison Park, and Madrona",
+    "total_pop":11155,
+    "total_uninsured_pop":317,
+    "percent_uninsured":2.84
+  },
+  {
+    "hra_id":42,
+    "hra_name":"Seattle - Capitol Hill",
+    "total_pop":39124,
+    "total_uninsured_pop":1459,
+    "percent_uninsured":3.73
+  },
+  {
+    "hra_id":43,
+    "hra_name":"Seattle - South Lake Union, Cascade, and Eastlake",
+    "total_pop":32505,
+    "total_uninsured_pop":1122,
+    "percent_uninsured":3.45
+  },
+  {
+    "hra_id":44,
+    "hra_name":"Seattle - Queen Anne",
+    "total_pop":30749,
+    "total_uninsured_pop":873,
+    "percent_uninsured":2.84
+  },
+  {
+    "hra_id":45,
+    "hra_name":"Magnolia and Interbay",
+    "total_pop":44825,
+    "total_uninsured_pop":1282,
+    "percent_uninsured":2.86
+  },
+  {
+    "hra_id":46,
+    "hra_name":"Fremont and Wallingford",
+    "total_pop":50524,
+    "total_uninsured_pop":2328,
+    "percent_uninsured":4.61
+  },
+  {
+    "hra_id":47,
+    "hra_name":"Seattle - University District",
+    "total_pop":22404,
+    "total_uninsured_pop":1076,
+    "percent_uninsured":4.8
+  },
+  {
+    "hra_id":48,
+    "hra_name":"Redmond - South",
+    "total_pop":24709,
+    "total_uninsured_pop":963,
+    "percent_uninsured":3.9
+  },
+  {
+    "hra_id":49,
+    "hra_name":"Seattle - Laurelhurst, Sand Point, and Wedgwood",
+    "total_pop":19069,
+    "total_uninsured_pop":253,
+    "percent_uninsured":1.33
+  },
+  {
+    "hra_id":50,
+    "hra_name":"Seattle - Ravenna and Bryant",
+    "total_pop":26549,
+    "total_uninsured_pop":1080,
+    "percent_uninsured":4.07
+  },
+  {
+    "hra_id":51,
+    "hra_name":"Kirkland - South",
+    "total_pop":48269,
+    "total_uninsured_pop":1510,
+    "percent_uninsured":3.13
+  },
+  {
+    "hra_id":52,
+    "hra_name":"Green Lake and Phinney Ridge",
+    "total_pop":35267,
+    "total_uninsured_pop":983,
+    "percent_uninsured":2.79
+  },
+  {
+    "hra_id":53,
+    "hra_name":"Redmond - North",
+    "total_pop":25201,
+    "total_uninsured_pop":1232,
+    "percent_uninsured":4.89
+  },
+  {
+    "hra_id":54,
+    "hra_name":"Bear Creek and Greater Sammamish",
+    "total_pop":60797,
+    "total_uninsured_pop":1844,
+    "percent_uninsured":3.03
+  },
+  {
+    "hra_id":55,
+    "hra_name":"Seattle - Ballard",
+    "total_pop":67011,
+    "total_uninsured_pop":2029,
+    "percent_uninsured":3.03
+  },
+  {
+    "hra_id":56,
+    "hra_name":"Seattle - Northgate and Lake City",
+    "total_pop":32497,
+    "total_uninsured_pop":1050,
+    "percent_uninsured":3.23
+  },
+  {
+    "hra_id":57,
+    "hra_name":"Kirkland - North",
+    "total_pop":25133,
+    "total_uninsured_pop":1041,
+    "percent_uninsured":4.14
+  },
+  {
+    "hra_id":58,
+    "hra_name":"Seattle - Broadview, Haller Lake, and Licton Springs",
+    "total_pop":51769,
+    "total_uninsured_pop":3396,
+    "percent_uninsured":6.56
+  },
+  {
+    "hra_id":59,
+    "hra_name":"Kenmore and Lake Forest Park",
+    "total_pop":45478,
+    "total_uninsured_pop":2124,
+    "percent_uninsured":4.67
+  },
+  {
+    "hra_id":60,
+    "hra_name":"Bothell and Woodinville",
+    "total_pop":46824,
+    "total_uninsured_pop":2065,
+    "percent_uninsured":4.41
+  },
+  {
+    "hra_id":61,
+    "hra_name":"Shoreline",
+    "total_pop":62548,
+    "total_uninsured_pop":2641,
+    "percent_uninsured":4.22
+  }
+]
