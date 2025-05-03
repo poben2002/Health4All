@@ -1,4 +1,4 @@
-﻿services:
+services:
   - type: web
     name: health4all-backend
     env: node
@@ -10,7 +10,7 @@
       - key: PORT
         value: "3000"
 
-  - type: static
+  - type: static-site
     name: health4all-frontend
     buildCommand: cd frontend && npm install && npm run build
     publishDir: frontend/dist
