@@ -18,15 +18,6 @@ function Description() {
   );
 }
 
-// Color function for circle markers based on comparison
-function getMarkerColor(comparison) {
-  return comparison === "higher"
-    ? "#ff0000"  // Red for higher
-    : comparison === "lower"
-      ? "#00ff00"  // Green for lower
-      : "#ffff00";  // Yellow for no difference
-}
-
 // Color function for chloropleth map based on rate values
 function getChloroplethColor(rate) {
   return rate > 200 ? '#800026' :
@@ -48,7 +39,7 @@ function formatPercent(num) {
   return num.toFixed(1) + "%";
 }
 
-function LegendControl({ activeLayer }) {
+function LegendControl() {
   const map = useMap();
   useEffect(() => {
     if (!map) return;
@@ -66,22 +57,7 @@ function LegendControl({ activeLayer }) {
         width: fit-content;
       `;
       
-      // Show legend based on active layer
-      const markerLegend = `
-        <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center;">Markers Legend</h4>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #ff0000; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
-          <strong>Higher Rate</strong>
-        </div>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #00ff00; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
-          <strong>Lower Rate</strong>
-        </div>
-        <div style="display: flex; align-items: center; margin-bottom: 16px;">
-          <span style="width: 20px; height: 20px; background: #ffff00; display: inline-block; margin-right: 10px; border-radius: 3px;"></span>
-          <strong>No Difference</strong>
-        </div>`;
-
+      // Only show Chloropleth legend
       const chloroplethLegend = `
         <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center;">Rate per 100,000</h4>
         <div style="display: flex; align-items: center; margin-bottom: 8px;">
@@ -109,98 +85,31 @@ function LegendControl({ activeLayer }) {
           <strong>100-120</strong>
         </div>`;
 
-      div.innerHTML = activeLayer === 'circleMarkers' ? markerLegend : 
-                     activeLayer === 'geoJSON' ? chloroplethLegend : '';
+      div.innerHTML = chloroplethLegend;
       return div;
     };
     legend.addTo(map);
     return () => {
       map.removeControl(legend);
     };
-  }, [map, activeLayer]);
-  return null;
-}
-
-// Move CircleMarkers outside of MapComponent and pass necessary functions as props
-function CircleMarkers({ 
-  breastCancerData, 
-  activeLayer, 
-  getDemographicData, 
-  createPopupContent, 
-  getMarkerColor 
-}) {
-  const map = useMap();
-
-  useEffect(() => {
-    if (!map || activeLayer !== 'circleMarkers' || !breastCancerData) return;
-  
-    const markers = breastCancerData
-      .filter(area => area.lat !== undefined && area.lng !== undefined)
-      .map(area => {
-        const demographics = getDemographicData(area.name);
-        return L.circleMarker([area.lat, area.lng], {
-          radius: 8,
-          fillColor: getMarkerColor(area.comparison),
-          color: "#000",
-          weight: 1,
-          opacity: 1,
-          fillOpacity: 0.8,
-        }).bindPopup(createPopupContent(area.name, area, demographics));
-      });
-
-    const layerGroup = L.layerGroup(markers).addTo(map);
-    return () => {
-      map.removeLayer(layerGroup);
-    };
-  }, [map, activeLayer, breastCancerData, getDemographicData, createPopupContent, getMarkerColor]);
-
-  return null;
-}
-
-function LayerHandler({ setActiveLayer }) {
-  const map = useMap();
-
-  useEffect(() => {
-    const handleLayerChange = (e) => {
-      if (e.name === "Circle Markers Layer") {
-        if (e.type === "overlayadd") {
-          setActiveLayer('circleMarkers');
-        } else if (e.type === "overlayremove") {
-          setActiveLayer(null);
-        }
-      } else if (e.name === "Chloropleth Layer") {
-        if (e.type === "overlayadd") {
-          setActiveLayer('geoJSON');
-        } else if (e.type === "overlayremove") {
-          setActiveLayer(null);
-        }
-      }
-    };
-
-    map.on('overlayadd', handleLayerChange);
-    map.on('overlayremove', handleLayerChange);
-
-    return () => {
-      map.off('overlayadd', handleLayerChange);
-      map.off('overlayremove', handleLayerChange);
-    };
-  }, [map, setActiveLayer]);
-
+  }, [map]);
   return null;
 }
 
 function MapComponent() {
   const [breastCancerData, setBreastCancerData] = useState([]);
   const [geoDataWithComparison, setGeoDataWithComparison] = useState(null);
-  const [activeLayer, setActiveLayer] = useState(null);
   const [demographicData, setDemographicData] = useState({
     race: [],
     insurance: [],
     income: []
   });
+  
+  // Map reference for direct rendering
+  const mapRef = useRef(null);
 
   // Update the apiBaseUrl to use window.API_BASE_URL
-  const apiBaseUrl = window.API_BASE_URL || import.meta.env.VITE_API_URL || 'https://health4all-backend.onrender.com';
+  const apiBaseUrl = window.API_BASE_URL || import.meta.env.VITE_API_URL || 'https://health4all-backend-13a9.onrender.com';
   
   // Add this for debugging
   useEffect(() => {
@@ -358,30 +267,80 @@ function MapComponent() {
     setGeoDataWithComparison(updatedGeoData);
   }, [breastCancerData]);
 
-  // Add debugging for layer state
+  // Update debug logging to no longer reference activeLayer
   useEffect(() => {
-    console.log("Active layer:", activeLayer);
     console.log("GeoData with comparison:", geoDataWithComparison ? geoDataWithComparison.length : "not set");
-  }, [activeLayer, geoDataWithComparison]);
+  }, [geoDataWithComparison]);
 
   // Add direct GeoJSON rendering without relying on LayersControl
-  const mapRef = useRef(null);
-  
-  // Get map reference
   const GetMapRef = () => {
     const map = useMap();
-    mapRef.current = map;
+    
+    // Set the map reference
+    useEffect(() => {
+      if (!map) return;
+      console.log("Map reference obtained");
+      mapRef.current = map;
+      
+      // Add GeoJSON if data is ready
+      if (geoDataWithComparison && breastCancerData.length) {
+        console.log("Adding GeoJSON directly after getting map reference");
+        
+        // Remove any existing layer
+        if (window.currentGeoLayer) {
+          map.removeLayer(window.currentGeoLayer);
+        }
+        
+        // Create and add the new layer
+        window.currentGeoLayer = L.geoJSON({
+          type: "FeatureCollection",
+          features: geoDataWithComparison
+        }, {
+          style: geoJSONStyle,
+          onEachFeature: onEachFeature
+        }).addTo(map);
+        
+        console.log("GeoJSON layer added to map");
+      }
+    }, [map, geoDataWithComparison, breastCancerData, geoJSONStyle, onEachFeature]);
+    
     return null;
   };
-  
-  // Directly add GeoJSON to map when data is ready
+
+  // Restore the geoJSONStyle function that was removed
+  const geoJSONStyle = useCallback((feature) => {
+    const cancerData = breastCancerData.find(
+      (data) => data.name === feature.properties.name
+    );
+    return {
+      fillColor: cancerData ? getChloroplethColor(cancerData.rate) : '#FED976',
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.7,
+    };
+  }, [breastCancerData]);
+
+  // Restore the onEachFeature function that was removed
+  const onEachFeature = useCallback((feature, layer) => {
+    const cancerData = breastCancerData.find(
+      (data) => data.name === feature.properties.name
+    );
+    if (cancerData) {
+      const demographics = getDemographicData(feature.properties.name);
+      const popupContent = createPopupContent(feature.properties.name, cancerData, demographics);
+      layer.bindPopup(popupContent);
+    }
+  }, [breastCancerData, getDemographicData, createPopupContent]);
+
+  // Watch for changes in data and update the GeoJSON layer
   useEffect(() => {
     if (!mapRef.current || !geoDataWithComparison || !breastCancerData.length) {
-      console.log("Cannot add GeoJSON layer yet - missing dependencies");
+      console.log("Cannot update GeoJSON layer yet - waiting for dependencies");
       return;
     }
     
-    console.log("Attempting to add GeoJSON layer directly to map");
+    console.log("Data has changed, updating GeoJSON layer");
     
     // Remove any existing layer
     if (window.currentGeoLayer) {
@@ -393,40 +352,13 @@ function MapComponent() {
       type: "FeatureCollection",
       features: geoDataWithComparison
     }, {
-      style: (feature) => {
-        const cancerData = breastCancerData.find(
-          (data) => data.name === feature.properties.name
-        );
-        return {
-          fillColor: cancerData ? getChloroplethColor(cancerData.rate) : '#FED976',
-          color: "#000",
-          weight: 1,
-          opacity: 1,
-          fillOpacity: 0.7,
-        };
-      },
-      onEachFeature: (feature, layer) => {
-        const cancerData = breastCancerData.find(
-          (data) => data.name === feature.properties.name
-        );
-        if (cancerData) {
-          const demographics = getDemographicData(feature.properties.name);
-          const popupContent = createPopupContent(feature.properties.name, cancerData, demographics);
-          layer.bindPopup(popupContent);
-        }
-      }
+      style: geoJSONStyle,
+      onEachFeature: onEachFeature
     }).addTo(mapRef.current);
     
-    console.log("GeoJSON layer added to map");
+    console.log("GeoJSON layer updated on map");
     
-  }, [geoDataWithComparison, breastCancerData, getDemographicData, createPopupContent]);
-
-  // Initialize the active layer
-  useEffect(() => {
-    // Set the default layer to geoJSON (Chloropleth)
-    setActiveLayer('geoJSON');
-    console.log("Setting initial active layer to geoJSON");
-  }, []);
+  }, [geoDataWithComparison, breastCancerData, geoJSONStyle, onEachFeature]);
 
   return (
     <div>
@@ -441,44 +373,11 @@ function MapComponent() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         <GetMapRef />
-        <LayersControl position="topright">
-          <LayersControl.Overlay
-            name="Chloropleth Layer"
-            checked={true}
-          >
-            <LayerGroup>
-              {geoDataWithComparison && (
-                <GeoJSON
-                  key={JSON.stringify(geoDataWithComparison)} // Add this to ensure proper updates
-                  data={{ 
-                    type: "FeatureCollection", 
-                    features: geoDataWithComparison 
-                  }}
-                  style={geoJSONStyle}
-                  onEachFeature={onEachFeature}
-                />
-              )}
-            </LayerGroup>
-          </LayersControl.Overlay>
-
-          <LayersControl.Overlay
-            name="Circle Markers Layer"
-            checked={false}
-          >
-            <LayerGroup>
-              <CircleMarkers 
-                breastCancerData={breastCancerData} 
-                activeLayer={activeLayer}
-                getDemographicData={getDemographicData}
-                createPopupContent={createPopupContent}
-                getMarkerColor={getMarkerColor}
-              />
-            </LayerGroup>
-          </LayersControl.Overlay>
-        </LayersControl>
-
-        <LegendControl activeLayer={activeLayer} />
-        <LayerHandler setActiveLayer={setActiveLayer} />
+        
+        {/* Render the legend directly */}
+        <LegendControl />
+        
+        {/* We've removed the LayersControl and LayerHandler components */}
       </MapContainer>
       <Description />
     </div>
