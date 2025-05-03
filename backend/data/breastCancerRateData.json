@@ -1,0 +1,553 @@
+{
+  "heatmap": [
+    {
+      "lat": 47.629852255,
+      "lng": -122.331875052,
+      "value": 101.6,
+      "rate": 101.6,
+      "name": "Seattle - South Lake Union, Cascade, and Eastlake",
+      "comparison": "not different",
+      "cases": 47
+    },
+    {
+      "lat": 47.334014301,
+      "lng": -122.313855802,
+      "value": 107.7,
+      "rate": 107.7,
+      "name": "Federal Way - North Corridor",
+      "comparison": "lower",
+      "cases": 94
+    },
+    {
+      "lat": 47.548317888,
+      "lng": -122.312341378,
+      "value": 110.0,
+      "rate": 110.0,
+      "name": "Seattle - South Beacon Hill, Georgetown, and South Park",
+      "comparison": "lower",
+      "cases": 101
+    },
+    {
+      "lat": 47.463381355,
+      "lng": -122.205679713,
+      "value": 112.2,
+      "rate": 112.2,
+      "name": "Renton - South",
+      "comparison": "lower",
+      "cases": 128
+    },
+    {
+      "lat": 47.514527100,
+      "lng": -122.330583705,
+      "value": 112.6,
+      "rate": 112.6,
+      "name": "North Highline and White Center",
+      "comparison": "not different",
+      "cases": 56
+    },
+    {
+      "lat": 47.435930888,
+      "lng": -122.292626194,
+      "value": 121.5,
+      "rate": 121.5,
+      "name": "Seatac",
+      "comparison": "not different",
+      "cases": 93
+    },
+    {
+      "lat": 47.497488047,
+      "lng": -122.235657898,
+      "value": 122.6,
+      "rate": 122.6,
+      "name": "Skyway",
+      "comparison": "not different",
+      "cases": 60
+    },
+    {
+      "lat": 47.594214195,
+      "lng": -122.315076020,
+      "value": 124.2,
+      "rate": 124.2,
+      "name": "Seattle - Central District, Chinatown-International District, Judkins, and North Beacon Hill",
+      "comparison": "not different",
+      "cases": 139
+    },
+    {
+      "lat": 47.496956990,
+      "lng": -122.181201594,
+      "value": 127.1,
+      "rate": 127.1,
+      "name": "Renton - North",
+      "comparison": "not different",
+      "cases": 219
+    },
+    {
+      "lat": 47.545489992,
+      "lng": -122.261748754,
+      "value": 129.7,
+      "rate": 129.7,
+      "name": "Seattle - Rainier Valley and Rainier Beach",
+      "comparison": "not different",
+      "cases": 206
+    },
+    {
+      "lat": 47.534346020,
+      "lng": -122.352648389,
+      "value": 130.0,
+      "rate": 130.0,
+      "name": "Seattle - Delridge",
+      "comparison": "not different",
+      "cases": 112
+    },
+    {
+      "lat": 47.298714696,
+      "lng": -122.280539448,
+      "value": 132.8,
+      "rate": 132.8,
+      "name": "Lakeland, Algona, Pacific, and Milton",
+      "comparison": "not different",
+      "cases": 136
+    },
+    {
+      "lat": 47.719802045,
+      "lng": -122.363575988,
+      "value": 133.1,
+      "rate": 133.1,
+      "name": "Seattle - Broadview, Haller Lake, and Licton Springs",
+      "comparison": "not different",
+      "cases": 141
+    },
+    {
+      "lat": 47.364619417,
+      "lng": -122.183227388,
+      "value": 134.0,
+      "rate": 134.0,
+      "name": "Kent - South",
+      "comparison": "not different",
+      "cases": 111
+    },
+    {
+      "lat": 47.602016706,
+      "lng": -122.115055633,
+      "value": 134.8,
+      "rate": 134.8,
+      "name": "Bellevue - Northeast",
+      "comparison": "not different",
+      "cases": 149
+    },
+    {
+      "lat": 47.470307405,
+      "lng": -122.276307021,
+      "value": 134.9,
+      "rate": 134.9,
+      "name": "Tukwila",
+      "comparison": "not different",
+      "cases": 64
+    },
+    {
+      "lat": 47.323364268,
+      "lng": -122.211710713,
+      "value": 136.3,
+      "rate": 136.3,
+      "name": "Auburn - North",
+      "comparison": "not different",
+      "cases": 173
+    },
+    {
+      "lat": 47.590429933,
+      "lng": -122.151994792,
+      "value": 136.8,
+      "rate": 136.8,
+      "name": "Bellevue - Central",
+      "comparison": "not different",
+      "cases": 146
+    },
+    {
+      "lat": 47.610016756,
+      "lng": -122.345244856,
+      "value": 137.3,
+      "rate": 137.3,
+      "name": "Seattle - Downtown, Belltown, and First Hill",
+      "comparison": "not different",
+      "cases": 105
+    },
+    {
+      "lat": 47.521036070,
+      "lng": -121.477785182,
+      "value": 137.5,
+      "rate": 137.5,
+      "name": "Duvall, Carnation, Skykomish, and Northeast King County",
+      "comparison": "not different",
+      "cases": 134
+    },
+    {
+      "lat": 47.393487824,
+      "lng": -122.177412760,
+      "value": 138.1,
+      "rate": 138.1,
+      "name": "Kent - East",
+      "comparison": "not different",
+      "cases": 166
+    },
+    {
+      "lat": 47.712553021,
+      "lng": -122.284681852,
+      "value": 139.6,
+      "rate": 139.6,
+      "name": "Seattle - Northgate and Lake City",
+      "comparison": "not different",
+      "cases": 182
+    },
+    {
+      "lat": 47.380594283,
+      "lng": -122.203244579,
+      "value": 140.6,
+      "rate": 140.6,
+      "name": "Kent - Central",
+      "comparison": "not different",
+      "cases": 88
+    },
+    {
+      "lat": 47.653928409,
+      "lng": -122.298669506,
+      "value": 140.7,
+      "rate": 140.7,
+      "name": "Seattle - University District",
+      "comparison": "not different",
+      "cases": 22
+    },
+    {
+      "lat": 47.393514337,
+      "lng": -122.325408260,
+      "value": 140.9,
+      "rate": 140.9,
+      "name": "Des Moines and Normandy Park",
+      "comparison": "not different",
+      "cases": 181
+    },
+    {
+      "lat": 47.335761919,
+      "lng": -121.765711768,
+      "value": 144.8,
+      "rate": 144.8,
+      "name": "East Highlands, Hobart, and Greater Maple Valley",
+      "comparison": "not different",
+      "cases": 110
+    },
+    {
+      "lat": 47.673658830,
+      "lng": -122.290253472,
+      "value": 145.0,
+      "rate": 145.0,
+      "name": "Seattle - Ravenna and Bryant",
+      "comparison": "not different",
+      "cases": 88
+    },
+    {
+      "lat": 47.276343434,
+      "lng": -122.206234297,
+      "value": 146.9,
+      "rate": 146.9,
+      "name": "Auburn - South",
+      "comparison": "not different",
+      "cases": 114
+    },
+    {
+      "lat": 47.635403883,
+      "lng": -122.350228187,
+      "value": 147.7,
+      "rate": 147.7,
+      "name": "Seattle - Queen Anne",
+      "comparison": "not different",
+      "cases": 145
+    },
+    {
+      "lat": 47.319792355,
+      "lng": -122.366389743,
+      "value": 148.8,
+      "rate": 148.8,
+      "name": "Federal Way - Central",
+      "comparison": "not different",
+      "cases": 139
+    },
+    {
+      "lat": 47.408647363,
+      "lng": -122.464255778,
+      "value": 149.3,
+      "rate": 149.3,
+      "name": "Vashon",
+      "comparison": "not different",
+      "cases": 76
+    },
+    {
+      "lat": 47.592792841,
+      "lng": -122.227451776,
+      "value": 150.0,
+      "rate": 150.0,
+      "name": "Mercer Island and Point Cities",
+      "comparison": "not different",
+      "cases": 173
+    },
+    {
+      "lat": 47.393537071,
+      "lng": -122.266109298,
+      "value": 150.7,
+      "rate": 150.7,
+      "name": "Kent - West",
+      "comparison": "not different",
+      "cases": 117
+    },
+    {
+      "lat": 47.639312849,
+      "lng": -122.394771831,
+      "value": 151.5,
+      "rate": 151.5,
+      "name": "Seattle - Magnolia and Interbay",
+      "comparison": "not different",
+      "cases": 109
+    },
+    {
+      "lat": 47.292631462,
+      "lng": -122.345235226,
+      "value": 151.7,
+      "rate": 151.7,
+      "name": "Federal Way - Dash Point and Southern Rim",
+      "comparison": "not different",
+      "cases": 138
+    },
+    {
+      "lat": 47.558135101,
+      "lng": -122.393891957,
+      "value": 151.8,
+      "rate": 151.8,
+      "name": "Seattle - West Seattle",
+      "comparison": "not different",
+      "cases": 296
+    },
+    {
+      "lat": 47.470614776,
+      "lng": -122.340621557,
+      "value": 151.8,
+      "rate": 151.8,
+      "name": "Burien",
+      "comparison": "not different",
+      "cases": 242
+    },
+    {
+      "lat": 47.762363596,
+      "lng": -122.341343265,
+      "value": 153.1,
+      "rate": 153.1,
+      "name": "Shoreline",
+      "comparison": "not different",
+      "cases": 291
+    },
+    {
+      "lat": 47.204724653,
+      "lng": -121.671025494,
+      "value": 153.9,
+      "rate": 153.9,
+      "name": "Enumclaw, Black Diamond, and Southeast King County",
+      "comparison": "not different",
+      "cases": 221
+    },
+    {
+      "lat": 47.717346127,
+      "lng": -122.218539549,
+      "value": 155.0,
+      "rate": 155.0,
+      "name": "Kirkland - North",
+      "comparison": "not different",
+      "cases": 159
+    },
+    {
+      "lat": 47.688361976,
+      "lng": -122.393694906,
+      "value": 157.2,
+      "rate": 157.2,
+      "name": "Seattle - Ballard",
+      "comparison": "not different",
+      "cases": 217
+    },
+    {
+      "lat": 47.509662560,
+      "lng": -122.047335761,
+      "value": 160.2,
+      "rate": 160.2,
+      "name": "Newcastle and Four Creeks",
+      "comparison": "not different",
+      "cases": 124
+    },
+    {
+      "lat": 47.752436856,
+      "lng": -122.165127135,
+      "value": 160.2,
+      "rate": 160.2,
+      "name": "Bothell and Woodinville",
+      "comparison": "not different",
+      "cases": 175
+    },
+    {
+      "lat": 47.650704643,
+      "lng": -122.337491044,
+      "value": 161.0,
+      "rate": 161.0,
+      "name": "Seattle - Fremont and Wallingford",
+      "comparison": "not different",
+      "cases": 98
+    },
+    {
+      "lat": 47.558138331,
+      "lng": -122.148115143,
+      "value": 163.7,
+      "rate": 163.7,
+      "name": "Bellevue - South",
+      "comparison": "not different",
+      "cases": 168
+    },
+    {
+      "lat": 47.752792256,
+      "lng": -122.264201685,
+      "value": 164.1,
+      "rate": 164.1,
+      "name": "Kenmore and Lake Forest Park",
+      "comparison": "not different",
+      "cases": 188
+    },
+    {
+      "lat": 47.690112703,
+      "lng": -122.110437514,
+      "value": 165.6,
+      "rate": 165.6,
+      "name": "Redmond - North",
+      "comparison": "not different",
+      "cases": 125
+    },
+    {
+      "lat": 47.441004668,
+      "lng": -122.145770581,
+      "value": 165.8,
+      "rate": 165.8,
+      "name": "Fairwood",
+      "comparison": "not different",
+      "cases": 106
+    },
+    {
+      "lat": 47.668488322,
+      "lng": -122.267418137,
+      "value": 166.9,
+      "rate": 166.9,
+      "name": "Seattle - Laurelhurst, Sand Point, and Wedgwood",
+      "comparison": "not different",
+      "cases": 142
+    },
+    {
+      "lat": 47.653779021,
+      "lng": -122.110621279,
+      "value": 167.7,
+      "rate": 167.7,
+      "name": "Redmond - South",
+      "comparison": "not different",
+      "cases": 122
+    },
+    {
+      "lat": 47.681719648,
+      "lng": -122.344605247,
+      "value": 168.1,
+      "rate": 168.1,
+      "name": "Seattle - Green Lake and Phinney Ridge",
+      "comparison": "not different",
+      "cases": 178
+    },
+    {
+      "lat": 47.633425996,
+      "lng": -122.292950448,
+      "value": 168.2,
+      "rate": 168.2,
+      "name": "Seattle - Montlake, Madison Park, and Madrona",
+      "comparison": "not different",
+      "cases": 134
+    },
+    {
+      "lat": 47.625588865,
+      "lng": -122.313842393,
+      "value": 168.4,
+      "rate": 168.4,
+      "name": "Seattle - Capitol Hill",
+      "comparison": "not different",
+      "cases": 107
+    },
+    {
+      "lat": 47.588298695,
+      "lng": -122.197117278,
+      "value": 176.5,
+      "rate": 176.5,
+      "name": "Bellevue - West",
+      "comparison": "not different",
+      "cases": 182
+    },
+    {
+      "lat": 47.685985719,
+      "lng": -122.047758693,
+      "value": 177.1,
+      "rate": 177.1,
+      "name": "Bear Creek and Greater Sammamish",
+      "comparison": "higher",
+      "cases": 244
+    },
+    {
+      "lat": 47.679705373,
+      "lng": -122.199462511,
+      "value": 182.9,
+      "rate": 182.9,
+      "name": "Kirkland - South",
+      "comparison": "higher",
+      "cases": 272
+    },
+    {
+      "lat": 47.366925276,
+      "lng": -122.106873404,
+      "value": 187.0,
+      "rate": 187.0,
+      "name": "Covington",
+      "comparison": "not different",
+      "cases": 81
+    },
+    {
+      "lat": 47.608069221,
+      "lng": -122.070267641,
+      "value": 189.0,
+      "rate": 189.0,
+      "name": "Sammamish",
+      "comparison": "higher",
+      "cases": 250
+    },
+    {
+      "lat": 47.555613295,
+      "lng": -122.054446002,
+      "value": 189.9,
+      "rate": 189.9,
+      "name": "Issaquah",
+      "comparison": "higher",
+      "cases": 186
+    },
+    {
+      "lat": 47.365801298,
+      "lng": -122.030709888,
+      "value": 202.8,
+      "rate": 202.8,
+      "name": "Maple Valley",
+      "comparison": "higher",
+      "cases": 109
+    },
+    {
+      "lat": 47.514316822,
+      "lng": -121.808918657,
+      "value": 220.6,
+      "rate": 220.6,
+      "name": "Snoqualmie and North Bend",
+      "comparison": "higher",
+      "cases": 100
+    }
+  ]
+} 

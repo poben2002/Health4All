@@ -1,4 +1,4 @@
-const data = require('../data/sampleHeatmap.json');
+const data = require('../data/breastCancerRateData.json');
 
 const getHeatmapData = (req, res) => {
   res.json(data);
