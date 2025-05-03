@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     'https://health4all-frontend.onrender.com',
+    'https://health4all-frontend-13a9.onrender.com', // In case the frontend has a similar ID
     'http://localhost:5173', // For local development
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
