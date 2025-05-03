@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import Navbar from './Navbar';
 import { MapContainer, TileLayer, useMap, GeoJSON, LayersControl, LayerGroup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -6,12 +6,15 @@ import L from "leaflet";
 import { useEffect, useState, useCallback, useRef } from "react";
 import geoData from "./Data/geoData.json";
 
+// Create context for sharing map data between components
+const MapContext = createContext({});
+
 function Description() {
   return (
     <section className="pt-4">
       <div className="flex flex-col text-center px-4">
         <p className="mt-6=4 text-lg font-light leading-7">
-          Interactive map of Neighborhoods and Cities in the King County area. Use the icon at the top right to toggle between marker view and chloropleth view.
+          Interactive map of Neighborhoods and Cities in the King County area. Use the layer options in the top right to toggle between views.
         </p>
       </div>
     </section>
@@ -39,60 +42,148 @@ function formatPercent(num) {
   return num.toFixed(1) + "%";
 }
 
-function LegendControl() {
+// Restore marker color function
+function getMarkerColor(comparison) {
+  return comparison === "higher"
+    ? "#ff0000"  // Red for higher
+    : comparison === "lower"
+      ? "#00ff00"  // Green for lower
+      : "#ffff00";  // Yellow for no difference
+}
+
+// Create a custom control for layer toggling
+function LayerToggleControl({ currentLayer, setCurrentLayer }) {
+  const map = useMap();
+  
+  useEffect(() => {
+    if (!map) return;
+    
+    // Create the custom control
+    const customControl = L.control({ position: 'topright' });
+    
+    customControl.onAdd = function() {
+      const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+      container.style.cssText = `
+        background: white;
+        padding: 8px;
+        border-radius: 4px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+      `;
+      
+      container.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 8px; text-align: center;">Layer Options</div>
+        <div>
+          <label style="display: block; margin-bottom: 8px;">
+            <input type="radio" name="layer" value="none" ${currentLayer === 'none' ? 'checked' : ''}>
+            <span style="margin-left: 5px;">No Layers</span>
+          </label>
+          <label style="display: block; margin-bottom: 8px;">
+            <input type="radio" name="layer" value="choropleth" ${currentLayer === 'choropleth' ? 'checked' : ''}>
+            <span style="margin-left: 5px;">Choropleth Map</span>
+          </label>
+          <label style="display: block;">
+            <input type="radio" name="layer" value="markers" ${currentLayer === 'markers' ? 'checked' : ''}>
+            <span style="margin-left: 5px;">Circle Markers</span>
+          </label>
+        </div>
+      `;
+      
+      // Prevent map interactions behind the control
+      L.DomEvent.disableClickPropagation(container);
+      
+      // Add event listeners to radio buttons
+      const radioButtons = container.querySelectorAll('input[type="radio"]');
+      radioButtons.forEach(radio => {
+        radio.addEventListener('change', function(e) {
+          setCurrentLayer(e.target.value);
+        });
+      });
+      
+      return container;
+    };
+    
+    customControl.addTo(map);
+    
+    return () => {
+      map.removeControl(customControl);
+    };
+  }, [map, currentLayer, setCurrentLayer]);
+  
+  return null;
+}
+
+// Restore the legend control
+function LegendControl({ currentLayer }) {
   const map = useMap();
   useEffect(() => {
     if (!map) return;
 
-    const legend = L.control({ position: "bottomright" });
+    const legend = L.control({ position: "topright" });
     legend.onAdd = function () {
       const div = L.DomUtil.create("div", "info legend");
       div.style.cssText = `
         background: white;
         padding: 10px 15px;
+        margin-top: 80px;
         border-radius: 8px;
         box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        font-size: 16px;
+        font-size: 14px;
         font-family: Inter, sans-serif;
         width: fit-content;
       `;
       
-      // Only show Chloropleth legend
+      // Create different legends based on active layer
       const chloroplethLegend = `
-        <h4 style="font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center;">Rate per 100,000</h4>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #800026; display: inline-block; margin-right: 10px;"></span>
+        <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px; text-align: center;">Rate per 100,000</h4>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #800026; display: inline-block; margin-right: 10px;"></span>
           <strong>200+</strong>
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #BD0026; display: inline-block; margin-right: 10px;"></span>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #BD0026; display: inline-block; margin-right: 10px;"></span>
           <strong>180-200</strong>
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #E31A1C; display: inline-block; margin-right: 10px;"></span>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #E31A1C; display: inline-block; margin-right: 10px;"></span>
           <strong>160-180</strong>
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #FC4E2A; display: inline-block; margin-right: 10px;"></span>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #FC4E2A; display: inline-block; margin-right: 10px;"></span>
           <strong>140-160</strong>
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #FD8D3C; display: inline-block; margin-right: 10px;"></span>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #FD8D3C; display: inline-block; margin-right: 10px;"></span>
           <strong>120-140</strong>
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
-          <span style="width: 20px; height: 20px; background: #FEB24C; display: inline-block; margin-right: 10px;"></span>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #FEB24C; display: inline-block; margin-right: 10px;"></span>
           <strong>100-120</strong>
         </div>`;
+      
+      const markerLegend = `
+        <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 10px; text-align: center;">Comparison to Average</h4>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #ff0000; display: inline-block; margin-right: 10px; border-radius: 50%;"></span>
+          <strong>Higher Rate</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #00ff00; display: inline-block; margin-right: 10px; border-radius: 50%;"></span>
+          <strong>Lower Rate</strong>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <span style="width: 18px; height: 18px; background: #ffff00; display: inline-block; margin-right: 10px; border-radius: 50%;"></span>
+          <strong>No Difference</strong>
+        </div>`;
 
-      div.innerHTML = chloroplethLegend;
+      div.innerHTML = currentLayer === 'markers' ? markerLegend : 
+                     currentLayer === 'choropleth' ? chloroplethLegend : '';
       return div;
     };
     legend.addTo(map);
     return () => {
       map.removeControl(legend);
     };
-  }, [map]);
+  }, [map, currentLayer]);
   return null;
 }
 
@@ -104,6 +195,7 @@ function MapComponent() {
     insurance: [],
     income: []
   });
+  const [currentLayer, setCurrentLayer] = useState('choropleth');
   
   // Map reference for direct rendering
   const mapRef = useRef(null);
@@ -272,7 +364,7 @@ function MapComponent() {
     console.log("GeoData with comparison:", geoDataWithComparison ? geoDataWithComparison.length : "not set");
   }, [geoDataWithComparison]);
 
-  // Add direct GeoJSON rendering without relying on LayersControl
+  // Simplified GetMapRef component to just get the map reference
   const GetMapRef = () => {
     const map = useMap();
     
@@ -281,28 +373,7 @@ function MapComponent() {
       if (!map) return;
       console.log("Map reference obtained");
       mapRef.current = map;
-      
-      // Add GeoJSON if data is ready
-      if (geoDataWithComparison && breastCancerData.length) {
-        console.log("Adding GeoJSON directly after getting map reference");
-        
-        // Remove any existing layer
-        if (window.currentGeoLayer) {
-          map.removeLayer(window.currentGeoLayer);
-        }
-        
-        // Create and add the new layer
-        window.currentGeoLayer = L.geoJSON({
-          type: "FeatureCollection",
-          features: geoDataWithComparison
-        }, {
-          style: geoJSONStyle,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-        
-        console.log("GeoJSON layer added to map");
-      }
-    }, [map, geoDataWithComparison, breastCancerData, geoJSONStyle, onEachFeature]);
+    }, [map]);
     
     return null;
   };
@@ -333,39 +404,67 @@ function MapComponent() {
     }
   }, [breastCancerData, getDemographicData, createPopupContent]);
 
-  // Watch for changes in data and update the GeoJSON layer
+  // Handle layer changes
   useEffect(() => {
-    if (!mapRef.current || !geoDataWithComparison || !breastCancerData.length) {
-      console.log("Cannot update GeoJSON layer yet - waiting for dependencies");
+    if (!mapRef.current || !breastCancerData.length || !geoDataWithComparison) {
+      console.log("Cannot update layers yet - waiting for map and data");
       return;
     }
     
-    console.log("Data has changed, updating GeoJSON layer");
+    console.log("Layer changed to:", currentLayer);
     
-    // Remove any existing layer
+    // Remove existing layers
     if (window.currentGeoLayer) {
       mapRef.current.removeLayer(window.currentGeoLayer);
+      window.currentGeoLayer = null;
     }
     
-    // Create and add the new layer
-    window.currentGeoLayer = L.geoJSON({
-      type: "FeatureCollection",
-      features: geoDataWithComparison
-    }, {
-      style: geoJSONStyle,
-      onEachFeature: onEachFeature
-    }).addTo(mapRef.current);
+    if (window.currentMarkerLayer) {
+      mapRef.current.removeLayer(window.currentMarkerLayer);
+      window.currentMarkerLayer = null;
+    }
     
-    console.log("GeoJSON layer updated on map");
+    // Add the selected layer
+    if (currentLayer === 'choropleth') {
+      // Add choropleth layer
+      window.currentGeoLayer = L.geoJSON({
+        type: "FeatureCollection",
+        features: geoDataWithComparison
+      }, {
+        style: geoJSONStyle,
+        onEachFeature: onEachFeature
+      }).addTo(mapRef.current);
+      
+      console.log("Choropleth layer added");
+    } 
+    else if (currentLayer === 'markers') {
+      // Add circle markers
+      const markers = breastCancerData
+        .filter(area => area.lat !== undefined && area.lng !== undefined)
+        .map(area => {
+          const demographics = getDemographicData(area.name);
+          return L.circleMarker([area.lat, area.lng], {
+            radius: 8,
+            fillColor: getMarkerColor(area.comparison),
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8,
+          }).bindPopup(createPopupContent(area.name, area, demographics));
+        });
+
+      window.currentMarkerLayer = L.layerGroup(markers).addTo(mapRef.current);
+      console.log("Markers layer added");
+    }
     
-  }, [geoDataWithComparison, breastCancerData, geoJSONStyle, onEachFeature]);
+  }, [currentLayer, breastCancerData, geoDataWithComparison, mapRef, getDemographicData, createPopupContent, geoJSONStyle, onEachFeature]);
 
   return (
     <div>
       <Navbar />
       <MapContainer
         center={[47.608013, -122.335167]}
-        zoom={10}
+        zoom={9}
         style={{ height: "1000px", width: "2000px" }}
       >
         <TileLayer
@@ -374,10 +473,14 @@ function MapComponent() {
         />
         <GetMapRef />
         
-        {/* Render the legend directly */}
-        <LegendControl />
+        {/* Layer controls */}
+        <LayerToggleControl 
+          currentLayer={currentLayer} 
+          setCurrentLayer={setCurrentLayer} 
+        />
         
-        {/* We've removed the LayersControl and LayerHandler components */}
+        {/* Legend based on current layer */}
+        <LegendControl currentLayer={currentLayer} />
       </MapContainer>
       <Description />
     </div>
