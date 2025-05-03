@@ -201,7 +201,7 @@ function MapComponent() {
 
   // Fetch breast cancer data
   useEffect(() => {
-    fetch("/api/heatmap")
+    fetch(`${import.meta.env.VITE_API_URL}/api/heatmap`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Received heatmap data:", data);
@@ -215,7 +215,7 @@ function MapComponent() {
   // Fetch demographic data
   useEffect(() => {
     // Fetch race data
-    fetch("/api/demographics/population-race")
+    fetch(`${import.meta.env.VITE_API_URL}/api/demographics/population-race`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -229,7 +229,7 @@ function MapComponent() {
       });
 
     // Fetch health insurance data
-    fetch("/api/demographics/health-insurance")
+    fetch(`${import.meta.env.VITE_API_URL}/api/demographics/health-insurance`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -243,7 +243,7 @@ function MapComponent() {
       });
 
     // Fetch income data
-    fetch("/api/demographics/median-income")
+    fetch(`${import.meta.env.VITE_API_URL}/api/demographics/median-income`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
