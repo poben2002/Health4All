@@ -20,6 +20,11 @@ app.use(cors({
 
 app.use(express.json());
 
+// Add a health check endpoint
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'Health4All API is running' });
+});
+
 app.use('/api/heatmap', heatmapRoutes);
 
 const cityDetailsRoutes = require('./routes/cityDetailsRoutes');

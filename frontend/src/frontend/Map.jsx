@@ -199,9 +199,20 @@ function MapComponent() {
     income: []
   });
 
+  // Update the apiBaseUrl to use window.API_BASE_URL
+  const apiBaseUrl = window.API_BASE_URL || import.meta.env.VITE_API_URL || 'https://health4all-backend.onrender.com';
+  
+  // Add this for debugging
+  useEffect(() => {
+    console.log("API Base URL:", apiBaseUrl);
+    console.log("VITE_API_URL env var:", import.meta.env.VITE_API_URL);
+    console.log("window.API_BASE_URL:", window.API_BASE_URL);
+  }, []);
+
   // Fetch breast cancer data
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/heatmap`)
+    console.log("Fetching from:", `${apiBaseUrl}/api/heatmap`);
+    fetch(`${apiBaseUrl}/api/heatmap`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Received heatmap data:", data);
@@ -210,12 +221,12 @@ function MapComponent() {
       .catch((err) => {
         console.error("Error fetching heatmap data:", err);
       });
-  }, []);
+  }, [apiBaseUrl]);
 
   // Fetch demographic data
   useEffect(() => {
     // Fetch race data
-    fetch(`${import.meta.env.VITE_API_URL}/api/demographics/population-race`)
+    fetch(`${apiBaseUrl}/api/demographics/population-race`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -229,7 +240,7 @@ function MapComponent() {
       });
 
     // Fetch health insurance data
-    fetch(`${import.meta.env.VITE_API_URL}/api/demographics/health-insurance`)
+    fetch(`${apiBaseUrl}/api/demographics/health-insurance`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -243,7 +254,7 @@ function MapComponent() {
       });
 
     // Fetch income data
-    fetch(`${import.meta.env.VITE_API_URL}/api/demographics/median-income`)
+    fetch(`${apiBaseUrl}/api/demographics/median-income`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -255,7 +266,7 @@ function MapComponent() {
       .catch((err) => {
         console.error("Error fetching income data:", err);
       });
-  }, []);
+  }, [apiBaseUrl]);
 
   // Helper functions
   const getDemographicData = useCallback((regionName) => {
