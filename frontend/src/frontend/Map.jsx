@@ -59,15 +59,20 @@ function LayerToggleControl({ currentLayer, setCurrentLayer }) {
     if (!map) return;
     
     // Create the custom control
-    const customControl = L.control({ position: 'topright' });
+    const customControl = L.control({ position: 'topleft' });
     
     customControl.onAdd = function() {
       const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
       container.style.cssText = `
         background: white;
-        padding: 8px;
-        border-radius: 4px;
-        box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+        padding: 12px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        font-size: 14px;
+        z-index: 1000;
+        max-width: 180px;
       `;
       
       container.innerHTML = `
@@ -118,18 +123,20 @@ function LegendControl({ currentLayer }) {
   useEffect(() => {
     if (!map) return;
 
-    const legend = L.control({ position: "topright" });
+    const legend = L.control({ position: "bottomleft" });
     legend.onAdd = function () {
       const div = L.DomUtil.create("div", "info legend");
       div.style.cssText = `
         background: white;
-        padding: 10px 15px;
-        margin-top: 80px;
-        border-radius: 8px;
+        padding: 12px 15px;
+        margin-bottom: 40px;
+        margin-left: 10px;
+        border-radius: 6px;
         box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
         font-size: 14px;
         font-family: Inter, sans-serif;
-        width: fit-content;
+        max-width: 180px;
+        z-index: 1000;
       `;
       
       // Create different legends based on active layer
