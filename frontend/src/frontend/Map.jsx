@@ -59,15 +59,15 @@ function LayerToggleControl({ currentLayer, setCurrentLayer }) {
     if (!map) return;
     
     // Create the custom control
-    const customControl = L.control({ position: 'topleft' });
+    const customControl = L.control({ position: 'topright' });
     
     customControl.onAdd = function() {
       const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
       container.style.cssText = `
         background: white;
         padding: 12px;
-        margin-top: 10px;
-        margin-left: 10px;
+        margin-top: 20px;
+        margin-right: 20px;
         border-radius: 6px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         font-size: 14px;
@@ -123,14 +123,14 @@ function LegendControl({ currentLayer }) {
   useEffect(() => {
     if (!map) return;
 
-    const legend = L.control({ position: "bottomleft" });
+    const legend = L.control({ position: "bottomright" });
     legend.onAdd = function () {
       const div = L.DomUtil.create("div", "info legend");
       div.style.cssText = `
         background: white;
         padding: 12px 15px;
-        margin-bottom: 40px;
-        margin-left: 10px;
+        margin-bottom: 60px;
+        margin-right: 20px;
         border-radius: 6px;
         box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
         font-size: 14px;
@@ -467,28 +467,36 @@ function MapComponent() {
   }, [currentLayer, breastCancerData, geoDataWithComparison, mapRef, getDemographicData, createPopupContent, geoJSONStyle, onEachFeature]);
 
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       <Navbar />
-      <MapContainer
-        center={[47.608013, -122.335167]}
-        zoom={9}
-        style={{ height: "1000px", width: "2000px" }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <GetMapRef />
-        
-        {/* Layer controls */}
-        <LayerToggleControl 
-          currentLayer={currentLayer} 
-          setCurrentLayer={setCurrentLayer} 
-        />
-        
-        {/* Legend based on current layer */}
-        <LegendControl currentLayer={currentLayer} />
-      </MapContainer>
+      <div className="w-full" style={{ padding: 0, margin: 0 }}>
+        <MapContainer
+          center={[47.608013, -122.335167]}
+          zoom={9}
+          style={{ 
+            height: "100vh",
+            width: "100vw",  // Use viewport width to ensure full width
+            maxWidth: "100%", // Prevent horizontal scrollbar
+            margin: 0,
+            padding: 0
+          }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <GetMapRef />
+          
+          {/* Layer controls */}
+          <LayerToggleControl 
+            currentLayer={currentLayer} 
+            setCurrentLayer={setCurrentLayer} 
+          />
+          
+          {/* Legend based on current layer */}
+          <LegendControl currentLayer={currentLayer} />
+        </MapContainer>
+      </div>
       <Description />
     </div>
   );
