@@ -90,6 +90,23 @@ function DataExplanation() {
   );
 }
 
+function MapPreview() {
+  return (
+    <section className="bg-white py-16 text-center px-4">
+      <h2 className="text-4xl font-semibold mb-4">See the Map in Action</h2>
+      <p className="mb-6 text-xl text-gray-700">
+        Here’s a glimpse of our interactive map exploring health equity in King County.
+      </p>
+      <a>
+        <img 
+          src="/images/map-preview.png" 
+          alt="Map preview" 
+          className="mx-auto rounded-2xl shadow-xl max-w-4xl w-full hover:opacity-90 transition duration-300"
+        />
+      </a>
+    </section>
+  );
+}
 
 function ExploreData() {
   const ref = useRef(null);  // Reference to the ExploreData section
@@ -147,6 +164,7 @@ function Home() {
       <Navbar />
       <Hero />
       <DataExplanation />
+      <MapPreview />
       <ExploreData />
       <Footer />
     </div>
