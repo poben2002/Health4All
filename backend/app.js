@@ -9,16 +9,26 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Configure CORS to allow requests from the frontend
+const allowedOrigins = [
+  'http://localhost:5173', // Vite dev server
+  'http://localhost:3000', // React default
+  'https://health4all-frontend.onrender.com' // simulate production
+];
+
 app.use(cors({
-  origin: [
-    'https://health4all-frontend.onrender.com',
-    'http://localhost:5173', // For local development
-    'http://localhost:3000'  // Alternative local development port
-  ],
+  origin: function (origin, callback) {
+    console.log('CORS request from:', origin);
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy violation: Origin not allowed'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 app.use(express.json());
 
