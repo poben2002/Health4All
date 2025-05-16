@@ -21,9 +21,6 @@ function Hero() {
             About Health4All
           </h1>
           <div className="w-full text-center text-xl font-semibold tracking-tighter">
-          {/* <p className="text-white">
-            The team, the mission, the data
-          </p> */}
         </div>
         </div>
       </div>
