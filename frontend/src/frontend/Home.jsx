@@ -20,11 +20,11 @@ function Hero() {
     >
       <div className="flex flex-col text-center max-w-3xl px-4">
         <h1 className="text-6xl font-bold tracking-tighter leading-tight max-md:text-4xl">
-          Social Determinants and Cancer in Seattle
+          Social Determinants and Breast Cancer in Seattle
         </h1>
         <p className="mt-6 text-2xl font-light leading-10">
           Explore how race, income, education, and other social factors
-          intersect with cancer data across Seattle's neighborhoods with our interactive map.
+          intersect with breast cancer data across Seattle's neighborhoods with our interactive map.
         </p>
         <div className="mt-10">
           <Link to="/Map" className={`inline-block px-6 py-3 text-xl font-medium bg-gray-200 text-black rounded-xl shadow-md`}>

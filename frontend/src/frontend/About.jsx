@@ -58,7 +58,7 @@ function Mission() {
                 <p className="mt-2 text-xl text-left mb-2">
 
                   This project was created to examine the relationship between social determinants of health—such as income, race, education, and healthcare
-                  access—and cancer outcomes in Seattle’s communities. By analyzing and visualizing this data, we aim to uncover patterns that may reveal
+                  access—and breast cancer outcomes in Seattle’s communities. By analyzing and visualizing this data, we aim to uncover patterns that may reveal
                   disparities in health, with a specific focus on cancer rates across different neighborhoods and zip codes. At its core, this project strives to:
                 </p>
               </div>
@@ -134,7 +134,14 @@ function AboutData() {
               <div className="flex flex-col w-full">
                 <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8"> Our Data</h2>
                 <p className="mt-2 text-xl text-left mb-2">
-                 Our data comes from _____
+                Our map brings together publicly available datasets to visualize breast cancer incidence and key social determinants of health across King County, Washington.
+                  Breast Cancer Rates: The choropleth map overlays breast cancer incidence rates by Health Reporting Area (HRA). This data comes from the Washington State Cancer Registry and reflects reported cases from 2020, the most recent year with comprehensive, neighborhood-level data available.
+                  Social Determinants of Health: When you hover over each neighborhood/HRA, the map displays information including:
+                    Median household income
+                    Racial and ethnic demographic composition
+                    Health insurance coverage rates
+                  These indicators are drawn from the U.S. Census Bureau’s 2020 American Community Survey (ACS). Though not fully up-to-date, 2020 is the latest year with consistent data available across both cancer incidence and socioeconomic indicators.
+                  Together, these datasets offer a snapshot of how health outcomes and community-level social factors intersect across King County neighborhoods. This project aims to help users explore potential patterns and disparities in cancer outcomes through an equity-informed lens.
                 </p>
                 </div>
                 </div>
