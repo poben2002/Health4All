@@ -7,7 +7,7 @@ import { motion, useInView, useAnimation } from "framer-motion";
 
 function Hero() {
   return (
-    <section className="w-full">
+    <section>
       <div
         className="relative flex flex-col justify-center items-center w-full min-h-screen bg-cover bg-center bg-no-repeat font-inter"
         style={{
@@ -15,13 +15,13 @@ function Hero() {
             'url("https://t4.ftcdn.net/jpg/02/86/41/49/360_F_286414909_WMqfFJGRJaIdfC5lHjfprGXFl2dzT0gq.jpg")',
         }}
       >
-        <div className="absolute inset-0 bg-white opacity-30" />
+        <div className="absolute inset-0 bg-white opacity-40" />
 
-        <div className="relative z-10 flex flex-col w-full text-center px-4">
+        <div className="relative flex flex-col text-center max-w-3xl px-4">
           <h1 className="text-7xl font-bold tracking-tighter text-black leading-tight">
             Resources
           </h1>
-          <p className="w-full text-center text-xl text-black font-semibold tracking-tighter z-20">
+          <p className="mt-6 text-2xl text-black font-light leading-10 tracking-tighter">
             Explore opportunities, take action, and find the support you need—all in one place
           </p>
         </div>
@@ -201,19 +201,19 @@ function StudiesSection() {
   }, [isInView, controls]);
 
   const studiesSections = {
-    title: "Studies and Articles",
+    title: "Studies and Education",
     sections: [
       {
-        title: "Lung Cancer Preventative Care in AI/AN Community",
+        title: "National Breast Cancer Foundation",
         description:
-        "Understanding determinants of lung cancer preventive care in at-risk urban American Indians and Alaska Natives: A mixed-methods study",
-        link: "https://www.sciencedirect.com/science/article/pii/S2211335524002377",
+        "NBCF's mission is to help women by providing help and inspiring hope to those affected by breast cancer. Provides educational articles and support services",
+        link: "https://www.nationalbreastcancer.org",
       },
       {
-        title: "Cancer Prevention and Mental Health of College Students",
+        title: "National Cancer Institute: Breast Cancer",
         description:
-        "The impact of cancer prevention education on the mental health of college students based on the difference-in-differences method",
-        link: "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2024.1446225/full",
+        "Information on breast cancer screening, treatment, causes and prevention, and more.",
+        link: "https://www.cancer.gov/types/breast",
       },
     ],
   };
@@ -243,8 +243,8 @@ function Footer() {
           <h3 className="text-left w-full">Contact Us</h3>
         </div>
         <div className="flex flex-col items-start">
-          <a href="mailto:someemail@uw.edu" className="text-left mt-3 text-black hover:text-gray-600">
-            someemail@uw.edu
+          <a href="mailto:halleee0415@gmail.com" className="text-left mt-3 text-black hover:text-gray-600">
+            halleee0415@gmail.com
           </a>
         </div>
       </div>

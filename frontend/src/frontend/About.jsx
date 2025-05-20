@@ -20,8 +20,6 @@ function Hero() {
           <h1 className="text-7xl font-bold tracking-tighter text-white leading-tight">
             About Health4All
           </h1>
-          <div className="w-full text-center text-xl font-semibold tracking-tighter">
-        </div>
         </div>
       </div>
     </section>
