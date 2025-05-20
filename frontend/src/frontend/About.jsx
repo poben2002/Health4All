@@ -108,7 +108,7 @@ function AboutData() {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.5 });
   const controls = useAnimation();
-
+  
   useEffect(() => {
     if (isInView) {
       controls.start({ opacity: 1, y: 0, transition: { duration: 0.8 } });
@@ -116,8 +116,7 @@ function AboutData() {
       controls.start({ opacity: 0, y: 50, transition: { duration: 0.8 } });
     }
   }, [isInView, controls]);
-
-
+    
   return (
     <motion.div
       ref={ref}
@@ -130,24 +129,49 @@ function AboutData() {
           <div className="flex flex-wrap flex-1 shrink gap-6 items-start self-stretch my-auto w-full basis-0 min-w-[240px]">
             <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[160px]">
               <div className="flex flex-col w-full">
-                <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8"> Our Data</h2>
-                <p className="mt-2 text-xl text-left mb-2">
-                Our map brings together publicly available datasets to visualize breast cancer incidence and key social determinants of health across King County, Washington.
-                  Breast Cancer Rates: The choropleth map overlays breast cancer incidence rates by Health Reporting Area (HRA). This data comes from the Washington State Cancer Registry and reflects reported cases from 2020, the most recent year with comprehensive, neighborhood-level data available.
-                  Social Determinants of Health: When you hover over each neighborhood/HRA, the map displays information including:
-                    Median household income
-                    Racial and ethnic demographic composition
-                    Health insurance coverage rates
-                  These indicators are drawn from the U.S. Census Bureau’s 2020 American Community Survey (ACS). Though not fully up-to-date, 2020 is the latest year with consistent data available across both cancer incidence and socioeconomic indicators.
-                  Together, these datasets offer a snapshot of how health outcomes and community-level social factors intersect across King County neighborhoods. This project aims to help users explore potential patterns and disparities in cancer outcomes through an equity-informed lens.
+                <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8">
+                  Our Data
+                </h2>
+                
+                <p className="mt-2 text-xl text-left mb-6">
+                  Our map brings together publicly available datasets to visualize breast cancer incidence and key social determinants of health across King County, Washington.
                 </p>
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold text-left mb-3">Breast Cancer Rates</h3>
+                  <p className="text-xl text-left">
+                    The choropleth map overlays breast cancer incidence rates by Health Reporting Area (HRA). This data comes from the Washington State Cancer Registry and reflects reported cases from 2020, the most recent year with comprehensive, neighborhood-level data available.
+                  </p>
                 </div>
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold text-left mb-3">Social Determinants of Health</h3>
+                  <p className="text-xl text-left mb-3">
+                    When you hover over each neighborhood/HRA, the map displays information including:
+                  </p>
+                  <ul className="list-disc text-left pl-8 text-xl mb-4">
+                    <li className="mb-2">Median household income</li>
+                    <li className="mb-2">Racial and ethnic demographic composition</li>
+                    <li className="mb-2">Health insurance coverage rates</li>
+                  </ul>
+                  <p className="text-xl text-left">
+                    These indicators are drawn from the U.S. Census Bureau's 2020 American Community Survey (ACS). Though not fully up-to-date, 2020 is the latest year with consistent data available across both cancer incidence and socioeconomic indicators.
+                  </p>
+                </div>
+                
+                <div className="mt-2">
+                  <h3 className="text-2xl font-semibold text-left mb-3">Purpose</h3>
+                  <p className="text-xl text-left">
+                    Together, these datasets offer a snapshot of how health outcomes and community-level social factors intersect across King County neighborhoods. This project aims to help users explore potential patterns and disparities in cancer outcomes through an equity-informed lens.
+                  </p>
                 </div>
               </div>
             </div>
-            </section>
-
-    </motion.div> )
+          </div>
+        </div>
+      </section>
+    </motion.div>
+  );
 }
 
 

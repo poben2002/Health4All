@@ -7,17 +7,18 @@ import { motion, useInView, useAnimation } from "framer-motion";
 
 function Hero() {
   return (
-    <section>
+    <section className>
       <div
         className="relative flex flex-col justify-center items-center w-full min-h-screen bg-cover bg-center bg-no-repeat font-inter"
         style={{
           backgroundImage:
             'url("https://t4.ftcdn.net/jpg/02/86/41/49/360_F_286414909_WMqfFJGRJaIdfC5lHjfprGXFl2dzT0gq.jpg")',
-        }}
+          backgroundSize: "cover",
+          }}
       >
         <div className="absolute inset-0 bg-white opacity-40" />
 
-        <div className="relative flex flex-col text-center max-w-3xl px-4">
+        <div className="relative z-10 flex flex-col text-center max-w-3xl px-4">
           <h1 className="text-7xl font-bold tracking-tighter text-black leading-tight">
             Resources
           </h1>
@@ -75,7 +76,6 @@ function ResourcesSection() {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={controls}
-      className="w-full min-h-screen"
     >
       <section className="p-16 w-full font-inter">
         <h2 className="text-4xl font-semibold tracking-tighter text-left text-black mb-8">Community Resources</h2>
@@ -175,9 +175,9 @@ function HealthcareSection() {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={controls}
-      className="w-full"
+
     >
-      <section className="p-16 max-md:px-5 font-inter">
+      <section className="p-16 w-full font-inter">
         <InfoSection
           title={healthcareSections.title}
           sections={healthcareSections.sections}
@@ -223,9 +223,9 @@ function StudiesSection() {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={controls}
-      className="w-full"
+      className="max-w-full"
     >
-      <section className="p-16 max-md:px-5 font-inter">
+      <section className="p-16 font-inter w-full">
         <InfoSection
           title={studiesSections.title}
           sections={studiesSections.sections}
@@ -238,7 +238,7 @@ function StudiesSection() {
 function Footer() {
   return (
     <footer className="flex overflow-hidden flex-wrap gap-4 items-start px-8 pt-8 pb-1 w-full text-base leading-snug text-black bg-white border-t border-zinc-300 min-h-[142px] max-md:px-5 max-md:max-w-full font-inter">
-      <div className="flex flex-col items-start w-full max-w-[320px]">
+      <div className="flex flex-col items-start w-full ">
         <div className="flex flex-col self-stretch pb-4 w-full font-semibold">
           <h3 className="text-left w-full">Contact Us</h3>
         </div>
@@ -254,7 +254,7 @@ function Footer() {
 
 function ResourcesPage() {
   return (
-    <div className="font-inter">
+    <div className="font-inter w-full min-h-screen">
       <Navbar />
       <Hero />
       <ResourcesSection />
