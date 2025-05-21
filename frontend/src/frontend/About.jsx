@@ -26,83 +26,6 @@ function Hero() {
   );
 }
 
-// function Mission() {
-//   const ref = useRef(null)
-//   const isInView = useInView(ref, { amount: 0.5 });
-//   const controls = useAnimation();
-
-//   useEffect(() => {
-//     if (isInView) {
-//       console.log("coming into view")
-//       controls.start({ opacity: 1, y: 0, transition: { duration: 0.8 } });
-//     } else {
-//       console.log("leaving view")
-//       controls.start({ opacity: 0, y: 50, transition: { duration: 0.8 } });
-//     }
-//   }, [isInView, controls])
-//   return (
-//     <motion.div
-//       ref={ref}
-//       initial={{ opacity: 0, y: 50 }}
-//       animate={controls}
-//       className="w-full min-h-screen"
-//     >
-//       <section className="flex flex-col justify-center p-16 w-full min-h-[90vh] text-gray-700 bg-white max-md:px-5 font-inter">
-//         <div className="flex flex-wrap gap-16 items-center w-full">
-//           <div className="flex flex-wrap flex-1 shrink gap-6 items-start self-stretch my-auto w-full basis-0 min-w-[240px]">
-//             <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[160px]">
-//               <div className="flex flex-col w-full">
-//                 <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8"> Our Mission</h2>
-//                 <p className="mt-2 text-xl text-left mb-2">
-
-//                   This project was created to examine the relationship between social determinants of health—such as income, race, education, and healthcare
-//                   access—and breast cancer outcomes in Seattle’s communities. By analyzing and visualizing this data, we aim to uncover patterns that may reveal
-//                   disparities in health, with a specific focus on cancer rates across different neighborhoods and zip codes. At its core, this project strives to:
-//                 </p>
-//               </div>
-
-//               <div className="pl-5 mt-2 text-left text-xl mb-2">
-//                 <strong>Identify Health Disparities:</strong>
-//                 <p>Explore patterns in behavior risk factors, education, and access to healthcare.</p>
-//               </div>
-//               <div className="pl-5 mt-2 text-left text-xl mb-2">
-//                 <strong>Promote Equity:</strong>
-//                 <p>Help policymakers, community organizations, and healthcare providers address health inequities.</p>
-//               </div>
-//               <div className="pl-5 mt-2 text-left text-xl mb-2">
-//                 <strong>Empower Communities:</strong>
-//                 <p>Enable individuals to make informed decisions for improved health outcomes.</p>
-//               </div>
-//             </div>
-
-//             <div className="flex flex-wrap gap-16 items-center w-full">
-//               <div className="flex flex-wrap flex-1 shrink gap-6 items-start self-stretch my-auto w-full basis-0 min-w-[240px]">
-//                 <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[160px]">
-//                   <div className="flex flex-col w-full">
-//                     <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8"> Why It Matters</h2>
-//                     <p className="mt-2 text-xl text-left mb-2">
-//                       Social determinants of health are key factors that shape how individuals and communities experience health outcomes.
-//                       These factors—such as where you live, your income level, your access to quality education,
-//                       and your healthcare options—often dictate the kind of health challenges a community will face.
-//                       In Seattle, as in many other cities, these factors can influence the likelihood of developing serious diseases, including cancer.
-//                       By connecting this social data to cancer rates across neighborhoods, this project seeks to:
-//                     </p>
-
-//                     <ul className="list-disc text-left ml-8 text-lg mt-4">
-//                       <li>Identify patterns that may reveal higher or lower cancer risks based on social conditions.</li>
-//                       <li>Inform public health strategies aimed at addressing these disparities.</li>
-//                       <li>Encourage local residents to engage in discussions about improving health equity.</li>
-//                     </ul>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </motion.div>
-//   );
-// }
 function Mission() {
   const ref = useRef(null)
   const isInView = useInView(ref, { amount: 0.5 });
@@ -125,7 +48,7 @@ function Mission() {
       animate={controls}
       className="w-full min-h-screen"
     >
-      <section className="flex flex-col justify-center p-16 w-full min-h-[90vh] text-gray-700 bg-white font-inter">
+      <section className="flex flex-col justify-center px-4 py-12 md:p-16 w-full min-h-[90vh] text-gray-700 bg-white font-inter">
         <div className="w-full mx-auto">
           <div className="mb-16">
             <h2 className="text-4xl font-semibold tracking-tighter leading-tight text-black text-left mb-8">Our Mission</h2>

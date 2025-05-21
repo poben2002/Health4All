@@ -175,9 +175,9 @@ function HealthcareSection() {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={controls}
-
+      className="max-w-full"
     >
-      <section className="p-16 w-full font-inter">
+      <section className="px-4 py-12 md:p-16 w-full font-inter">
         <InfoSection
           title={healthcareSections.title}
           sections={healthcareSections.sections}
