@@ -12,10 +12,9 @@ function Hero() {
       className="relative flex flex-col justify-center items-center w-full min-h-screen bg-cover bg-center bg-no-repeat font-inter"
       style={{
         backgroundImage: "url('https://cdn.builder.io/api/v1/image/assets/8b5f020b1697482bb283efed7adbe58e/6dbd5e49b7ba35a3f444e71ab032b6917712e69008fc6c72291c658fcb0b995c?apiKey=8b5f020b1697482bb283efed7adbe58e&')",
-        backgroundSize: "cover",   // Ensure the image covers the whole section without stretching
-        backgroundPosition: 'center',  // Centers the background image
-        margin: 0,                  // Removes default margin
-        padding: 0,                 // Removes default padding
+        backgroundSize: "cover",
+        margin: 0,
+        padding: 0,   
       }}
     >
       <div className="flex flex-col text-center max-w-3xl px-4">
@@ -97,21 +96,21 @@ function MapPreview() {
       <p className="mb-6 text-xl text-gray-700">
         Here’s a glimpse of our interactive map exploring health equity in King County.
       </p>
-      <a>
+      <Link to="/map">
         <img 
           src="/images/map-preview.png" 
           alt="Map preview" 
           className="mx-auto rounded-2xl shadow-xl max-w-4xl w-full hover:opacity-90 transition duration-300"
         />
-      </a>
+      </Link>
     </section>
   );
 }
 
 function ExploreData() {
-  const ref = useRef(null);  // Reference to the ExploreData section
-  const isInView = useInView(ref, { amount: 0.5 });  // Track visibility
-  const controls = useAnimation();  // Animation controls
+  const ref = useRef(null); 
+  const isInView = useInView(ref, { amount: 0.5 }); 
+  const controls = useAnimation(); 
 
   useEffect(() => {
     if (isInView) {
@@ -125,8 +124,8 @@ function ExploreData() {
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}  // Start with opacity 0 and y offset
-      animate={controls}  // Use animation controls
+      initial={{ opacity: 0, y: 50 }}
+      animate={controls} 
       className="flex flex-col items-center w-full text-black bg-white font-inter mt-[-10px]"
     >
       <h2 className="text-5xl font-semibold tracking-tighter leading-tight text-center mb-4 max-md:text-4xl">
