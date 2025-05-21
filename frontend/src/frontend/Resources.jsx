@@ -16,14 +16,14 @@ function Hero() {
           backgroundSize: "cover",
           }}
       >
-        <div className="absolute inset-0 bg-white opacity-40" />
+        <div className="absolute inset-0 bg-white opacity-30" />
 
         <div className="relative z-10 flex flex-col text-center max-w-3xl px-4">
           <h1 className="text-7xl font-bold tracking-tighter text-black leading-tight">
             Resources
           </h1>
-          <p className="mt-6 text-2xl text-black font-light leading-10 tracking-tighter">
-            Explore opportunities, take action, and find the support you need—all in one place
+          <p className="mt-6 text-2xl font-light tracking-tighter" style={{ color: 'black' }}>
+            <span className="text-black">Explore opportunities, take action, and find the support you need—all in one place</span>
           </p>
         </div>
       </div>

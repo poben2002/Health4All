@@ -148,8 +148,8 @@ function Footer() {
           <h3 className="text-left w-full">Contact Us</h3>
         </div>
         <div className="flex flex-col items-start">
-          <a href="mailto:someemail@uw.edu" className="text-left mt-3 text-black hover:text-gray-600">
-            someemail@uw.edu
+          <a href="mailto:halleee0415@gmail.com" className="text-left mt-3 text-black hover:text-gray-600">
+            halleee0415@gmail.com
           </a>
         </div>
       </div>
@@ -165,7 +165,7 @@ function Home() {
       <Hero />
       <DataExplanation />
       <MapPreview />
-      <ExploreData />
+      {/* <ExploreData /> */}
       <Footer />
     </div>
   );
