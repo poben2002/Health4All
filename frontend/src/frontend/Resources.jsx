@@ -48,7 +48,7 @@ function ResourcesSection() {
     {
       title: "Contact Local Lawmakers",
       subtitle:
-        "Connect with passionate organizations in King County that are working to improve healthcare equity and cancer awareness.",
+        "Connect with passionate organizations in Washington that are working to improve healthcare equity and cancer awareness.",
       icon:
         "https://cdn-icons-png.flaticon.com/512/7847/7847753.png",
       link: "https://nohla.org/"
@@ -56,7 +56,7 @@ function ResourcesSection() {
     {
       title: "Join a Petition",
       subtitle:
-        "Your voice matters! Take action today by signing a petition or reaching out to lawmakers who can make a real impact on healthcare policies in King County.",
+        "Your voice matters! Take action today by signing a petition or reaching out to lawmakers who can make a real impact on healthcare policies.",
       icon:
         "https://cdn.builder.io/api/v1/image/assets/8b5f020b1697482bb283efed7adbe58e/d0ba8ab5a038951222491353476cb11956d5845c54d7e5154081267e8eacb89a?apiKey=8b5f020b1697482bb283efed7adbe58e&",
       link: "https://www.fightcancer.org/states/national/actions" 
