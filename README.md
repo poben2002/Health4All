@@ -21,15 +21,21 @@ The website has four pages:
 
 
 **Local Set Up**
+
 git clone https://github.com/poben2002/Health4All.git
+
 cd Health4All/frontend
+
 npm run dev
 
 **Technology Used**
+
 VS Code 3
 
 **Final Product and Presentation**
+
 https://docs.google.com/presentation/d/1F1gUujaQ45ZG_QP2kjbiTHgCIoBcUCWNBaXNW2-laQg/edit?usp=sharing
+
 https://health4all-frontend.onrender.com/#/
 
 **Next Steps:**
