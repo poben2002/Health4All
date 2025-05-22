@@ -22,7 +22,7 @@ function Hero() {
           <h1 className="text-7xl font-bold tracking-tighter text-black leading-tight">
             Resources
           </h1>
-          <p className="mt-6 text-2xl font-light tracking-tighter" style={{ color: 'black' }}>
+          <p className="mt-6 text-2xl font-inter tracking-tighter" style={{ color: 'black' }}>
             <span className="text-black">Explore opportunities, take action, and find the support you need—all in one place</span>
           </p>
         </div>
