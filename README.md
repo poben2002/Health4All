@@ -8,19 +8,15 @@ INFO Capstone Winter 2025 project repo for group Health4All.
 The website has four pages:
 - Home Page: Introduces our project
 - Map Page: Hosts the interactive GIS tool that visualizes breast cancer incidence across King County
-
-Highlights:
-Interactive map with color-coded regions
-Tooltips and detailed statistics by area
-
-- Resource Page: Connects users with real-world support services, linking external resources across multiple categories.
-
-Sections:
-Get Involved: Community opportunities and advocacy events
-Make an Appointment: Local clinic directories and screening providers
-Healthcare and Financial Support: Aid programs and insurance assistance
-Learn More: Educational materials on breast cancer prevention and care
-
+	Highlights:
+	- Interactive map with color-coded regions
+	- Tooltips and detailed statistics by area
+- Resource Page: Connects users with real-world support services, linking external resources across multiple categories.	
+	Sections:
+	- Get Involved: Community opportunities and advocacy events
+	- Make an Appointment: Local clinic directories and screening providers
+	- Healthcare and Financial Support: Aid programs and insurance assistance
+	- Learn More: Educational materials on breast cancer prevention and care
 - About Page: Provides transparency around the project’s creation, including where the data comes from, who built the tool, and what drives the mission.
 
 
